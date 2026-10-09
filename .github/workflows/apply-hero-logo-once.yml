@@ -1,0 +1,64 @@
+name: Apply hero logo once
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch hero logo
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+
+          html = html.replace(
+              '<h1 id="hero-title">KATTO<span class="accent">BASE</span></h1>',
+              '<h1 id="hero-title" class="hero-logo-title"><img class="hero-logo-wide" src="images/kattobase_logo_wide.png" alt="KATTOBASE HIROSHIMA BASEBALL WATCHING GUIDE"></h1>',
+              1,
+          )
+
+          html = html.replace(
+              '<h1>KATTO<span class="accent">BASE</span></h1>',
+              '<h1 id="hero-title" class="hero-logo-title"><img class="hero-logo-wide" src="images/kattobase_logo_wide.png" alt="KATTOBASE HIROSHIMA BASEBALL WATCHING GUIDE"></h1>',
+              1,
+          )
+
+          if '.hero-logo-title{' not in html:
+              html = html.replace(
+                  '.accent{color:var(--red)}',
+                  '.hero-logo-title{margin:.85rem 0 1rem;line-height:0;letter-spacing:0}.hero-logo-wide{display:block;width:min(100%,700px);height:auto}.hero-logo-title .hero-logo-wide{max-width:100%}.accent{color:var(--red)}',
+                  1,
+              )
+
+          if '.hero-logo-wide{width:min(100%,540px)}' not in html:
+              html = html.replace(
+                  '@media(max-width:760px){.brand-logo{width:142px}',
+                  '@media(max-width:760px){.brand-logo{width:142px}.hero-logo-wide{width:min(100%,540px)}',
+                  1,
+              )
+
+          path.write_text(html, encoding='utf-8')
+          Path('.github/workflows/apply-hero-logo-once.yml').unlink(missing_ok=True)
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/apply-hero-logo-once.yml
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Use wide logo in hero title"
+            git push
+          fi
