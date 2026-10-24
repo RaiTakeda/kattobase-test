@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="680" viewBox="0 0 800 680" role="img" aria-label="広島駅南口からカープロードを歩いてマツダスタジアムへ向かう概念図">
+<rect width="800" height="680" fill="#fff"/>
+<g fill="#fff" stroke="#111" stroke-width="6">
+<rect x="57" y="35" width="686" height="150" rx="24"/>
+<rect x="57" y="257" width="686" height="150" rx="24"/>
+<rect x="57" y="474" width="686" height="150" rx="24"/>
+</g>
+<g stroke="#111" stroke-width="8" fill="none" stroke-linecap="round">
+<rect x="91" y="72" width="102" height="76" rx="13"/>
+<path d="M108 94h68M110 122h21m15 0h29M110 149v13m68-13v13"/>
+<circle cx="128" cy="134" r="5" fill="#111"/><circle cx="164" cy="134" r="5" fill="#111"/>
+<path d="M105 350q26-38 50-6l35 30M132 291l14 28m0 0-31 20m31-20 31 10m-31-10-10 48"/>
+<circle cx="144" cy="284" r="14" fill="#111"/>
+<path d="M89 545q40-42 104 0l-14 50H103zM102 547l28 18 24-24 27 27M139 564v30"/>
+</g>
+<path d="M400 193v56m-18-20 18 20 18-20M400 415v53m-18-20 18 20 18-20" fill="none" stroke="#e60012" stroke-width="11" stroke-linecap="square"/>
+<g font-family="Arial,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif" fill="#111">
+<text x="226" y="106" font-size="43" font-weight="800">広島駅 南口</text>
+<text x="226" y="145" font-size="24" font-weight="700">HIROSHIMA STATION</text>
+<text x="226" y="328" font-size="43" font-weight="800">カープロード</text>
+<text x="226" y="367" font-size="24" font-weight="700">CARP ROAD</text>
+<text x="224" y="546" font-size="43" font-weight="800">マツダ スタジアム</text>
+<text x="224" y="584" font-size="24" font-weight="700">MAZDA STADIUM</text>
+</g>
+<rect x="65" y="417" width="290" height="50" rx="12" fill="#e60012"/>
+<text x="210" y="452" text-anchor="middle" font-family="Arial,'Yu Gothic',sans-serif" font-size="30" font-weight="800" fill="#fff">徒歩 約10〜15分</text>
+</svg>
