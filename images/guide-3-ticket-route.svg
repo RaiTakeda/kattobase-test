@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 0 800 650" role="img" aria-label="チケットの有無によってプロムナードを上るか正面チケット売場へ進むかを示す図">
+<rect width="800" height="650" fill="#fff"/>
+<rect x="65" y="30" width="670" height="91" rx="17" fill="#111"/>
+<text x="400" y="89" text-anchor="middle" font-family="Arial,'Yu Gothic',sans-serif" fill="#fff" font-size="41" font-weight="800">球場到着時：チケットは？</text>
+<g stroke="#111" stroke-width="6" fill="white"><rect x="57" y="151" width="686" height="194" rx="24"/><rect x="57" y="372" width="686" height="216" rx="24"/></g>
+<rect x="78" y="173" width="86" height="61" rx="7" fill="#e60012"/><path d="M93 196h56M93 212h33" stroke="#fff" stroke-width="7"/>
+<g font-family="Arial,'Yu Gothic',sans-serif">
+<text x="191" y="214" fill="#111" font-size="39" font-weight="800">チケットを持っている</text>
+<text x="191" y="261" fill="#e60012" font-size="39" font-weight="800">→ プロムナードを上る</text>
+<text x="191" y="305" fill="#111" font-size="27">紙チケット・QRチケット</text>
+<text x="191" y="434" fill="#111" font-size="39" font-weight="800">購入・引換が必要</text>
+<text x="191" y="485" fill="#e60012" font-size="36" font-weight="800">→ 球場正面のチケット売場</text>
+<text x="191" y="532" fill="#111" font-size="25">当日券・窓口引換が必要な予約</text>
+<text x="191" y="566" fill="#111" font-size="25">※予約時の引換案内も確認</text>
+</g>
+<g stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"><rect x="89" y="411" width="64" height="71" rx="6"/><path d="M101 432h40m-40 15h25m-25 15h39"/></g>
+</svg>
