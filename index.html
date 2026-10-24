@@ -150,6 +150,28 @@
   }
 }
 @media(max-width:760px){.ticket-comparison{grid-template-columns:1fr}.ticket-option h3{font-size:.86rem}.ticket-option p{font-size:.84rem}.hero-grid,.cols{grid-template-columns:1fr}.quick{grid-template-columns:repeat(2,1fr)}.guide{grid-template-columns:56px 1fr;gap:.72rem}.num{width:48px;height:48px;border-radius:14px;font-size:1.05rem}.route-grid{grid-template-columns:1fr}}@media(max-width:440px){.brand{font-size:.88rem}.guide{grid-template-columns:1fr}.num{width:44px;height:36px;border-radius:10px}.title-row{margin-top:.25rem}h1{font-size:2.4rem}.quick a{font-size:.75rem}}
+  
+/* Section 3: stadium access and replaceable illustrations */
+.access-map-link{display:inline-flex;align-items:center;gap:.4rem;padding:.52rem .8rem;background:var(--red);color:#fff;text-decoration:none;font-weight:900;font-size:.92rem;border-radius:10px}
+.access-map-link:hover{background:var(--red-dark)}
+.access-map-link:focus-visible,.access-store-list a:focus-visible{outline:3px solid #174ea6;outline-offset:3px}
+.access-subtitle{font-size:.92rem;font-weight:950;color:var(--navy);margin:.9rem 0 .25rem}
+.access-store-list{margin:.25rem 0 .85rem;padding-left:1.3rem;font-size:.9rem}
+.access-store-list a{color:var(--red-dark);text-decoration:underline;text-underline-offset:3px}
+.access-fineprint{font-size:.79rem!important;color:var(--muted)!important;line-height:1.65!important}
+.access-visual-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1.05rem}
+.access-figure{margin:0;padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:var(--radius);min-width:0}
+.access-figure h3,.access-spots>h3{margin:0 0 .6rem;font-size:.99rem;line-height:1.45;color:var(--navy)}
+.access-figure img{display:block;width:100%;max-width:470px;height:auto;margin:auto;object-fit:contain}
+.access-figure figcaption{margin-top:.55rem;color:var(--muted);font-size:.78rem;line-height:1.6}
+.access-spots{margin-top:1.05rem;padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.access-spots>.access-fineprint{margin:-.2rem 0 .7rem}
+.access-spot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+.access-spot{margin:0;min-width:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.access-spot img{display:block;width:100%;height:auto;aspect-ratio:640/370;object-fit:contain}
+.access-spot figcaption{padding:.5rem .4rem;text-align:center;font-size:.8rem;font-weight:850;color:var(--navy);line-height:1.5}
+@media(max-width:760px){.access-visual-grid{grid-template-columns:1fr}.access-spot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.access-figure img{max-width:430px}}
+
   </style>
 </head>
 <body>
@@ -247,7 +269,54 @@
           <p class="seat-price-note">The color markers are a simple reference for the seat categories in this guide. Always check the official seat map and ticket page before purchasing.</p>
         </section>
         <p>空席があれば、当日券を球場窓口で購入できることもあります。座席を選ぶときは、「ビジター席」に注意してください。ビジター席は旅行者向けではなく、カープの対戦相手チームを応援する人のための席です。</p><div class="warning">GWやお盆の試合は売り切れやすいため、早めにチケットを確認しましょう。</div></div><div class="side"><div class="mini-title">SEAT IMAGE</div><div class="seat"><div class="infield">内野席</div><div class="visitor">ビジター<br>応援エリア</div><div class="field">FIELD</div><div class="carp">カープ<br>応援エリア</div><div class="home">ホーム側</div></div><p class="small">詳しい座席位置・ルールは購入前に公式座席図を確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon">⚾</span>Editor's Tip</h3><p>初めて観戦する人には、内野1階席がおすすめです。グラウンドが見やすく、落ち着いて観戦できます。応援を本格的に楽しみたい場合はカープパフォーマンス席も候補ですが、初観戦では少し上級者向けです。</p></aside></div></section>
-<section class="guide" id="access"><div class="num">3</div><div><div class="title-row"><h2>スタジアムへのアクセス</h2><span class="kicker">WALK FROM HIROSHIMA STATION</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムの最寄り駅は広島駅です。広島駅南口からスタジアムまでは徒歩約10分で、試合日は多くの野球ファンが同じ方向へ歩いています。</p><p>Google Mapsでは「MAZDA Zoom-Zoom Stadium Hiroshima」と検索できます。広島空港と広島駅は離れているため、空港から直接向かう場合は移動時間に注意してください。</p><div class="tags"><span class="tag red">広島駅南口</span><span class="tag">徒歩約10〜15分</span><span class="tag">Google Maps対応</span></div></div><aside class="tip"><h3><span class="tip-icon">⚾</span>Editor's Tip</h3><p>初めて行く人には、広島駅から徒歩で向かう方法がおすすめです。カープロードを歩くと、試合前の雰囲気も楽しめます。</p></aside></div></div></section>
+<section class="guide" id="access">
+<div class="num">3</div>
+<div>
+  <div class="title-row"><h2>スタジアムへのアクセス</h2><span class="kicker">WALK FROM HIROSHIMA STATION</span></div>
+  <div class="cols">
+    <div class="fact">
+      <div class="label">BASIC INFO</div>
+      <p>マツダ スタジアムの最寄り駅は広島駅です。広島駅南口から徒歩約10〜15分。初めて訪れる人にも徒歩がおすすめです。</p>
+      <p>球場名を入力する必要はありません。下のリンクからGoogle Mapsで場所を確認できます。</p>
+      <p><a class="access-map-link" href="https://www.google.com/maps/search/?api=1&query=MAZDA%20Zoom-Zoom%20Stadium%20Hiroshima" target="_blank" rel="noopener noreferrer" aria-label="マツダ スタジアムをGoogle Mapsで開く">Google Mapsで球場を見る ↗</a></p>
+      <h3 class="access-subtitle">球場周辺のコンビニ</h3>
+      <ul class="access-store-list">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%BA%83%E5%B3%B6%E5%8D%97%E8%9F%B9%E5%B1%8B%E4%BA%8C%E4%B8%81%E7%9B%AE%E5%BA%97" target="_blank" rel="noopener noreferrer">ローソン 広島南蟹屋二丁目店 ↗</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%BA%83%E5%B3%B6%E6%9D%B1%E8%8D%92%E7%A5%9E%E7%94%BA%E5%BA%97" target="_blank" rel="noopener noreferrer">ローソン 広島東荒神町店 ↗</a></li>
+      </ul>
+      <h3 class="access-subtitle">球場に着いたら</h3>
+      <p>チケットを持っている場合は、プロムナードを上って入場ゲートへ進みます。チケットの購入や窓口での引き換えが必要な場合は、プロムナードを上らず、球場正面のチケット売場へ向かってください。</p>
+      <p class="access-fineprint">※ Klookなどで予約した場合も、窓口引換が必要かどうかは予約確認書に記載された案内を優先してください。</p>
+    </div>
+    <aside class="tip">
+      <h3><span class="tip-icon">⚾</span>Editor's Tip</h3>
+      <p>広島駅から球場までの「カープロード」も、観戦前の楽しみのひとつ。選手紹介パネル、球団の歴史を紹介するモニュメント、赤いローソン、赤い東横インなど、カープらしい景色を見つけながら歩いてみてください。</p>
+    </aside>
+  </div>
+  <div class="access-visual-grid">
+    <figure class="access-figure">
+      <h3>徒歩ルートの概念図</h3>
+      <img src="images/guide-3-walking-route.svg" width="800" height="680" loading="lazy" alt="広島駅南口からカープロードを通ってマツダ スタジアムへ向かう徒歩約10〜15分の流れ">
+      <figcaption>仮図：実際の道路の位置関係・曲がり角は表していません。後日、写真や動画を追加予定。</figcaption>
+    </figure>
+    <figure class="access-figure">
+      <h3>チケットの有無で進む方向が変わります</h3>
+      <img src="images/guide-3-ticket-route.svg" width="800" height="650" loading="lazy" alt="紙またはQRチケットがあればプロムナードへ。購入・窓口引換が必要なら球場正面のチケット売場へ向かう">
+      <figcaption>仮図：入場口とチケット売場の正確な位置は、現地の案内に従ってください。</figcaption>
+    </figure>
+  </div>
+  <div class="access-spots">
+    <h3>カープロードの見どころ</h3>
+    <p class="access-fineprint">現在は仮イラストです。後日、実際の写真に差し替える予定です。</p>
+    <div class="access-spot-grid">
+      <figure class="access-spot"><img src="images/guide-3-spot-players.svg" width="640" height="370" loading="lazy" alt="選手紹介パネルの仮イラスト"><figcaption>選手紹介パネル</figcaption></figure>
+      <figure class="access-spot"><img src="images/guide-3-spot-history.svg" width="640" height="370" loading="lazy" alt="球団の歴史を紹介するモニュメントの仮イラスト"><figcaption>球団の歴史を紹介するモニュメント</figcaption></figure>
+      <figure class="access-spot"><img src="images/guide-3-spot-lawson.svg" width="640" height="370" loading="lazy" alt="赤いローソンの仮イラスト"><figcaption>赤いローソン</figcaption></figure>
+      <figure class="access-spot"><img src="images/guide-3-spot-hotel.svg" width="640" height="370" loading="lazy" alt="赤い東横インの仮イラスト"><figcaption>赤い東横イン</figcaption></figure>
+    </div>
+  </div>
+</div>
+</section>
 <section class="guide" id="rules"><div class="num">4</div><div><div class="title-row"><h2>スタジアムルール</h2><span class="kicker">KNOW BEFORE YOU GO</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムでは、ビン・カン・ペットボトル類や危険物は持ち込めません。入場時には手荷物検査があります。</p><p>ビジターパフォーマンス席は、カープの対戦相手チームを応援する人のための席です。カープパフォーマンス席は、カープを応援する人のための席です。</p><p>再入場は可能ですが、外へ出る場合は再入場用の出口で手続きが必要です。</p><div class="tags"><span class="tag red">ビン・カン・PETボトル禁止</span><span class="tag">手荷物検査</span><span class="tag">再入場可</span></div></div><aside class="tip"><h3><span class="tip-icon">⚾</span>Editor's Tip</h3><p>雨の日は、座席で傘を差すよりレインコートがおすすめです。大きな荷物は、広島駅やホテルに預けてから向かうと楽です。</p></aside></div></div></section>
 <section class="guide" id="weather"><div class="num">5</div><div><div class="title-row"><h2>天気をチェック</h2><span class="kicker">OUTDOOR STADIUM</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムは屋外球場です。試合前には、天気予報と公式サイトのお知らせを確認しましょう。</p><p>夏は日差しと暑さが強く、春・秋のナイトゲームは肌寒くなることがあります。雨が予想される場合は、レインコートを用意すると安心です。</p><div class="tags"><span class="tag gold">雨：レインコート</span><span class="tag red">夏：暑さ対策</span><span class="tag">夜：羽織るもの</span></div></div><aside class="tip"><h3><span class="tip-icon">⚾</span>Editor's Tip</h3><p>屋根の少ない場所もあるため、雨具や日よけは球場に着く前に用意しておくのがおすすめです。雨天中止の発表は直前になることもあります。</p></aside></div></div></section>
 <section class="guide" id="gate"><div class="num">6</div><div><div class="title-row"><h2>入場口</h2><span class="kicker">ENTER THE BALLPARK</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div><div class="side"><div class="mini-title">GATE IMAGE</div><div class="gate"><div class="gate-ring"></div><span class="glabel g1">正面ゲート</span><span class="glabel g2">JR側ゲート</span><span class="glabel g3">メインゲート</span></div><p class="small">位置関係のイメージです。実際の導線は現地案内も確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon">⚾</span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
