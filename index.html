@@ -262,6 +262,16 @@ body{background:#fff}
 .airtime-journey-narita{left: 68%;top: 30%;}
 .airtime-journey-bus{left: 42%;top: 65%;}
 
+
+/* Season overview faithfully follows the uploaded horizontal SVG layout */
+.season-chart{position:relative;width:100%;aspect-ratio:3360/604;container-type:inline-size;margin:1.1rem 0 1.35rem;overflow:visible}
+.season-phase{position:absolute;top:1.3%;height:43%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:2.6cqw;line-height:1.18;white-space:nowrap;color:#111}
+.season-pre{left:16.43%;width:7.74%;background:#ff0000}
+.season-regular{left:24.67%;width:48.84%;background:#ff0000}
+.season-post{left:77.9%;width:7.7%;background:#f4b183}
+.season-months{position:absolute;left:0;top:49.2%;width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:.5cqw;height:42.9%}
+.season-months span{background:#d9d9d9;display:grid;place-items:center;font-size:4.35cqw;font-weight:850;line-height:1}
+
 </style>
 </head>
 <body>
@@ -325,7 +335,12 @@ body{background:#fff}
     </aside>
   </div>
 </section>
-<section class="guide" id="schedule"><div class="num">1</div><div><div class="title-row"><h2>試合日程を確認</h2><span class="kicker">CHECK THE DATE</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>試合日程は、カープ公式サイトのチームスケジュールで確認できます。マツダ スタジアム開催の試合は、日程表の球場欄に「マツダ」と表示されています。</p><p>プロ野球のシーズンは主に3月から10月です。平日はナイトゲームが多く、土日祝は春や秋はデーゲーム、夏はナイトゲームが多い傾向があります。</p><p>雨天中止や開始時間の変更は、カープ公式サイトのトップページで確認しましょう。雨予報でも、試合直前まで中止が発表されないことがあります。</p><div class="tags"><span class="tag red">公式日程</span><span class="tag">「マツダ」を確認</span><span class="tag gold">当日のお知らせも確認</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する場合は、試合開始の1時間前に到着するのがおすすめです。ゆったり観戦したい人は平日、応援の熱気を味わいたい人は土日祝の試合を選ぶとよいでしょう。</p></aside></div></div></section>
+<section class="guide" id="schedule"><div class="num">1</div><div><div class="title-row"><h2>試合日程を確認</h2><span class="kicker">CHECK THE DATE</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>試合日程は、カープ公式サイトのチームスケジュールで確認できます。マツダ スタジアム開催の試合は、日程表の球場欄に「マツダ」と表示されています。</p><p>プロ野球のシーズンは主に3月から10月です。平日はナイトゲームが多く、土日祝は春や秋はデーゲーム、夏はナイトゲームが多い傾向があります。</p><p>雨天中止や開始時間の変更は、カープ公式サイトのトップページで確認しましょう。雨予報でも、試合直前まで中止が発表されないことがあります。</p><div class="season-chart" role="img" aria-label="日本のプロ野球シーズンの概念図。3月はプレシーズン、4月から9月はレギュラーシーズン、10月はポストシーズン。1月から12月を表示。">
+  <div class="season-phase season-pre" data-i18n="schedule.preseason">PRE<br>SEASON</div>
+  <div class="season-phase season-regular" data-i18n="schedule.regularSeason">REGULAR SEASON</div>
+  <div class="season-phase season-post" data-i18n="schedule.postseason">POST<br>SEASON</div>
+  <div class="season-months"><span data-i18n="schedule.month1">1</span><span data-i18n="schedule.month2">2</span><span data-i18n="schedule.month3">3</span><span data-i18n="schedule.month4">4</span><span data-i18n="schedule.month5">5</span><span data-i18n="schedule.month6">6</span><span data-i18n="schedule.month7">7</span><span data-i18n="schedule.month8">8</span><span data-i18n="schedule.month9">9</span><span data-i18n="schedule.month10">10</span><span data-i18n="schedule.month11">11</span><span data-i18n="schedule.month12">12</span></div>
+</div><div class="tags"><span class="tag red">公式日程</span><span class="tag">「マツダ」を確認</span><span class="tag gold">当日のお知らせも確認</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する場合は、試合開始の1時間前に到着するのがおすすめです。ゆったり観戦したい人は平日、応援の熱気を味わいたい人は土日祝の試合を選ぶとよいでしょう。</p></aside></div></div></section>
 <section class="guide" id="tickets"><div class="num">2</div><div><div class="title-row"><h2>チケットを購入</h2><span class="kicker">GET YOUR SEAT</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>チケットは、カープ公式ホームページ、マツダ スタジアム窓口、コンビニ・プレイガイドなどで購入できます。旅行前にオンラインで購入しておくと安心です。</p><h3 class="ticket-compare-title">PURCHASE METHODS</h3><div class="ticket-comparison" aria-label="チケット購入方法の比較"><div class="ticket-option"><h3>Online</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available from outside Japan</p><p>Ease of purchase: Low</p></div><div class="ticket-option"><h3>Convenience Stores</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available only within Japan</p><p>Ease of purchase: High</p></div><div class="ticket-option"><h3>Stadium Ticket Office</h3><p><span class="ticket-highlight">Business hours only</span></p><p>Available at the stadium ticket office</p><p>Ease of purchase: Medium</p></div></div><p class="ticket-note">※販売条件や受付時間は、試合・座席・販売時期によって変わることがあります。購入前に公式情報を確認してください。</p>
 
         <section class="seat-price-section" aria-labelledby="seat-price-title">
