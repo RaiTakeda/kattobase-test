@@ -272,6 +272,28 @@ body{background:#fff}
 .season-months{position:absolute;left:0;top:49.2%;width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:.5cqw;height:42.9%}
 .season-months span{background:#d9d9d9;display:grid;place-items:center;font-size:4.35cqw;font-weight:850;line-height:1}
 
+
+/* Schedule examples: reproduce uploaded SVG's paired cards and numbered dotted callouts. */
+.schedule-key-visual{width:100%;display:grid;grid-template-columns:1fr 1fr;column-gap:9.7%;align-items:start;margin:1.25rem 0;overflow:visible}
+.schedule-annotated-page{position:relative;width:100%;aspect-ratio:1570/1601;min-width:0}
+.schedule-sample-img{width:100%;height:100%;display:block;object-fit:fill}
+.schedule-outline{position:absolute;display:block;border:0.6cqw dashed #ff0000;pointer-events:none;box-sizing:border-box}
+.schedule-outline-one{left:-2.1%;top:-3.8%;width:24.8%;height:24.4%;border-radius:50%}
+.schedule-outline-two{left:74.8%;top:-.3%;width:22.9%;height:13.2%;border-radius:8%}
+.schedule-outline-three{left:33.6%;top:4%;width:33.3%;height:31.8%;border-radius:50%}
+.schedule-outline-four{left:31.7%;top:34.5%;width:37.7%;height:13.2%;border-radius:9%}
+.schedule-outline-five{left:2.55%;top:71%;width:95.2%;height:28.9%;border-radius:5%}
+.schedule-marker{position:absolute;display:grid;place-items:center;width:11.2%;aspect-ratio:1;background:#ff0000;color:#fff;border-radius:50%;font-size:clamp(8px,2.8vw,38px);font-weight:850;line-height:1;pointer-events:none}
+.schedule-marker-one{left:-3.1%;top:-6.4%}
+.schedule-marker-two{left:68.7%;top:-6.4%}
+.schedule-marker-three{left:31.6%;top:2.7%}
+.schedule-marker-four{left:26%;top:35.5%}
+.schedule-marker-five{left:-3.1%;top:65.4%}
+#schedule .schedule-key-visual{container-type:inline-size}
+#schedule .schedule-outline{border-width:.55cqw}
+#schedule .schedule-marker{font-size:4.7cqw}
+@media(max-width:600px){.schedule-key-visual{margin:1rem 0;column-gap:8%}}
+
 </style>
 </head>
 <body>
@@ -340,7 +362,9 @@ body{background:#fff}
   <div class="season-phase season-regular" data-i18n="schedule.regularSeason">REGULAR SEASON</div>
   <div class="season-phase season-post" data-i18n="schedule.postseason">POST<br>SEASON</div>
   <div class="season-months"><span data-i18n="schedule.month1">1</span><span data-i18n="schedule.month2">2</span><span data-i18n="schedule.month3">3</span><span data-i18n="schedule.month4">4</span><span data-i18n="schedule.month5">5</span><span data-i18n="schedule.month6">6</span><span data-i18n="schedule.month7">7</span><span data-i18n="schedule.month8">8</span><span data-i18n="schedule.month9">9</span><span data-i18n="schedule.month10">10</span><span data-i18n="schedule.month11">11</span><span data-i18n="schedule.month12">12</span></div>
-</div><div class="tags"><span class="tag red">公式日程</span><span class="tag">「マツダ」を確認</span><span class="tag gold">当日のお知らせも確認</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する場合は、試合開始の1時間前に到着するのがおすすめです。ゆったり観戦したい人は平日、応援の熱気を味わいたい人は土日祝の試合を選ぶとよいでしょう。</p></aside></div></div></section>
+</div>
+<div class="schedule-key-visual" role="group" aria-label="試合日程表の見方。左右の実例で1から5までの確認ポイントを赤い点線で示しています。"><div class="schedule-annotated-page schedule-annotated-left"><img class="schedule-sample-img" src="images/schedule01.svg" alt="試合日程表の表示例（左）" loading="lazy"><span class="schedule-outline schedule-outline-one" aria-hidden="true"></span><span class="schedule-marker schedule-marker-one" aria-hidden="true">1</span><span class="schedule-outline schedule-outline-two" aria-hidden="true"></span><span class="schedule-marker schedule-marker-two" aria-hidden="true">2</span><span class="schedule-outline schedule-outline-three" aria-hidden="true"></span><span class="schedule-marker schedule-marker-three" aria-hidden="true">3</span><span class="schedule-outline schedule-outline-four" aria-hidden="true"></span><span class="schedule-marker schedule-marker-four" aria-hidden="true">4</span><span class="schedule-outline schedule-outline-five" aria-hidden="true"></span><span class="schedule-marker schedule-marker-five" aria-hidden="true">5</span></div><div class="schedule-annotated-page schedule-annotated-right"><img class="schedule-sample-img" src="images/schedule02.svg" alt="試合日程表の表示例（右）" loading="lazy"><span class="schedule-outline schedule-outline-one" aria-hidden="true"></span><span class="schedule-marker schedule-marker-one" aria-hidden="true">1</span><span class="schedule-outline schedule-outline-two" aria-hidden="true"></span><span class="schedule-marker schedule-marker-two" aria-hidden="true">2</span><span class="schedule-outline schedule-outline-three" aria-hidden="true"></span><span class="schedule-marker schedule-marker-three" aria-hidden="true">3</span><span class="schedule-outline schedule-outline-four" aria-hidden="true"></span><span class="schedule-marker schedule-marker-four" aria-hidden="true">4</span><span class="schedule-outline schedule-outline-five" aria-hidden="true"></span><span class="schedule-marker schedule-marker-five" aria-hidden="true">5</span></div></div>
+<div class="tags"><span class="tag red">公式日程</span><span class="tag">「マツダ」を確認</span><span class="tag gold">当日のお知らせも確認</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する場合は、試合開始の1時間前に到着するのがおすすめです。ゆったり観戦したい人は平日、応援の熱気を味わいたい人は土日祝の試合を選ぶとよいでしょう。</p></aside></div></div></section>
 <section class="guide" id="tickets"><div class="num">2</div><div><div class="title-row"><h2>チケットを購入</h2><span class="kicker">GET YOUR SEAT</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>チケットは、カープ公式ホームページ、マツダ スタジアム窓口、コンビニ・プレイガイドなどで購入できます。旅行前にオンラインで購入しておくと安心です。</p><h3 class="ticket-compare-title">PURCHASE METHODS</h3><div class="ticket-comparison" aria-label="チケット購入方法の比較"><div class="ticket-option"><h3>Online</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available from outside Japan</p><p>Ease of purchase: Low</p></div><div class="ticket-option"><h3>Convenience Stores</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available only within Japan</p><p>Ease of purchase: High</p></div><div class="ticket-option"><h3>Stadium Ticket Office</h3><p><span class="ticket-highlight">Business hours only</span></p><p>Available at the stadium ticket office</p><p>Ease of purchase: Medium</p></div></div><p class="ticket-note">※販売条件や受付時間は、試合・座席・販売時期によって変わることがあります。購入前に公式情報を確認してください。</p>
 
         <section class="seat-price-section" aria-labelledby="seat-price-title">
