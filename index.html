@@ -325,6 +325,15 @@ body{background:#fff}
 .schedule-tip-months{position:absolute;left:0;right:0;top:48.7437%;height:43.5511%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:.506%}
 .schedule-tip-months span{min-width:0;background:#d9d9d9;color:#111;display:grid;place-items:center;font-weight:850;font-size:4.375cqw;line-height:1}
 
+
+/* Five evenly spaced schedule-tip legend rows reconstructed from schedule_tip02.svg */
+.schedule-tip-events{display:grid;grid-template-rows:repeat(5,minmax(0,auto));margin:1.15rem 0 .3rem;width:100%}
+.schedule-tip-event{display:grid;grid-template-columns:minmax(0,28%) minmax(0,1fr);align-items:center;column-gap:1rem;min-height:3.25rem;padding:.65rem .4rem;border-bottom:1px solid #4472c4}
+.schedule-tip-event:last-child{border-bottom:0}
+.schedule-tip-event-period{display:flex;align-items:center;justify-content:center;min-height:2.15rem;padding:.3rem .65rem;background:#ff0000;color:white;border-radius:999px;font-size:.84rem;font-weight:750;line-height:1.3;text-align:center}
+.schedule-tip-event-description{font-size:.88rem;line-height:1.5;color:#17212b}
+@media(max-width:560px){.schedule-tip-event{grid-template-columns:minmax(0,34%) minmax(0,1fr);column-gap:.55rem;padding:.55rem .15rem;min-height:3.3rem}.schedule-tip-event-period{font-size:.7rem;padding:.3rem .2rem}.schedule-tip-event-description{font-size:.75rem;line-height:1.45}}
+
 </style>
 </head>
 <body>
@@ -417,6 +426,13 @@ body{background:#fff}
     <span class="schedule-tip-highlight" style="--start:77.8571%;--width:3.8988%"></span>
   </div>
   <div class="schedule-tip-months" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+</div>
+<div class="schedule-tip-events" aria-label="観戦チケットが人気になる時期の目安">
+  <div class="schedule-tip-event"><span class="schedule-tip-event-period" data-i18n="schedule.tipPeriod1">３月下旬</span><span class="schedule-tip-event-description" data-i18n="schedule.tipDescription1">開幕カード（開幕１試合目～３試合目）</span></div>
+  <div class="schedule-tip-event"><span class="schedule-tip-event-period" data-i18n="schedule.tipPeriod2">５月上旬</span><span class="schedule-tip-event-description" data-i18n="schedule.tipDescription2">春の大型連休（ゴールデンウィーク）</span></div>
+  <div class="schedule-tip-event"><span class="schedule-tip-event-period" data-i18n="schedule.tipPeriod3">８月上旬</span><span class="schedule-tip-event-description" data-i18n="schedule.tipDescription3">夏の大型連休（お盆休み）</span></div>
+  <div class="schedule-tip-event"><span class="schedule-tip-event-period" data-i18n="schedule.tipPeriod4">８月～９月</span><span class="schedule-tip-event-description" data-i18n="schedule.tipDescription4">チームが優勝争いをしていた場合、チケット入手困難</span></div>
+  <div class="schedule-tip-event"><span class="schedule-tip-event-period" data-i18n="schedule.tipPeriod5">ポストシーズン</span><span class="schedule-tip-event-description" data-i18n="schedule.tipDescription5">ポストシーズンの試合はチケット入手困難</span></div>
 </div>
 </aside></div></div></section>
 <section class="guide" id="tickets"><div class="num">2</div><div><div class="title-row"><h2>チケットを購入</h2><span class="kicker">GET YOUR SEAT</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>チケットは、カープ公式ホームページ、マツダ スタジアム窓口、コンビニ・プレイガイドなどで購入できます。旅行前にオンラインで購入しておくと安心です。</p><h3 class="ticket-compare-title">PURCHASE METHODS</h3><div class="ticket-comparison" aria-label="チケット購入方法の比較"><div class="ticket-option"><h3>Online</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available from outside Japan</p><p>Ease of purchase: Low</p></div><div class="ticket-option"><h3>Convenience Stores</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available only within Japan</p><p>Ease of purchase: High</p></div><div class="ticket-option"><h3>Stadium Ticket Office</h3><p><span class="ticket-highlight">Business hours only</span></p><p>Available at the stadium ticket office</p><p>Ease of purchase: Medium</p></div></div><p class="ticket-note">※販売条件や受付時間は、試合・座席・販売時期によって変わることがあります。購入前に公式情報を確認してください。</p>
