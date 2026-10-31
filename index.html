@@ -334,6 +334,23 @@ body{background:#fff}
 .schedule-tip-event-description{font-size:.88rem;line-height:1.5;color:#17212b}
 @media(max-width:560px){.schedule-tip-event{grid-template-columns:minmax(0,34%) minmax(0,1fr);column-gap:.55rem;padding:.55rem .15rem;min-height:3.3rem}.schedule-tip-event-period{font-size:.7rem;padding:.3rem .2rem}.schedule-tip-event-description{font-size:.75rem;line-height:1.45}}
 
+
+/* Interactive stadium seat map: SVG paths are clickable, descriptions remain HTML */
+.interactive-seat-section{margin:1.15rem 0 1.4rem}
+.interactive-seat-section h3{margin:0 0 .3rem;color:var(--navy);font-size:1rem;font-weight:950}
+.interactive-seat-intro,.interactive-seat-note{font-size:.84rem!important;color:var(--muted);line-height:1.65}
+.interactive-seat-map{width:100%;max-width:780px;margin:.75rem auto;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:160px}
+.interactive-seat-map svg{width:100%;height:auto;display:block}
+.interactive-seat-map [data-seat-id]{cursor:pointer;transition:filter .15s}
+.interactive-seat-map [data-seat-id]:hover{filter:brightness(1.13) drop-shadow(0 0 7px #c8102e80)}
+.interactive-seat-map [data-seat-id].is-selected{filter:drop-shadow(0 0 6px #c8102e);stroke:#c8102e!important;stroke-width:14!important;paint-order:stroke fill}
+.interactive-seat-map [data-seat-id]:focus-visible{outline:none;stroke:#c8102e!important;stroke-width:16!important}
+.interactive-seat-map [data-seat-id]:focus{outline:none}
+.interactive-seat-loading{padding:2rem;text-align:center}
+.interactive-seat-details{border:1px solid #e9b1bc;border-left:4px solid var(--red);background:#fff8f9;border-radius:10px;padding:.9rem 1rem;min-height:80px}
+.interactive-seat-details h4{margin:0 0 .35rem;color:var(--navy);font-size:1.1rem}
+.interactive-seat-details p{margin:.2rem 0;font-size:.9rem;line-height:1.65}
+.interactive-seat-details .seat-meta{font-size:.78rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -532,6 +549,13 @@ body{background:#fff}
           </div>
           <p class="seat-price-note">The color markers are a simple reference for the seat categories in this guide. Always check the official seat map and ticket page before purchasing.</p>
         </section>
+<section class="interactive-seat-section" aria-labelledby="interactive-seat-heading">
+<h3 id="interactive-seat-heading">SEAT MAP</h3>
+<p class="interactive-seat-intro">座席図の色付きエリアをタップ（クリック）すると、下に座席情報を表示します。</p>
+<div id="interactive-seat-map" class="interactive-seat-map" aria-label="マツダスタジアムの座席図"><p class="interactive-seat-loading">座席図を読み込んでいます…</p></div>
+<div id="interactive-seat-details" class="interactive-seat-details" aria-live="polite" aria-atomic="true"><p>座席エリアを選択してください。</p></div>
+<p class="interactive-seat-note">座席配置は概略図です。実際の座席区分・販売状況・価格は公式サイトで確認してください。</p>
+</section>
         <p>空席があれば、当日券を球場窓口で購入できることもあります。座席を選ぶときは、「ビジター席」に注意してください。ビジター席は旅行者向けではなく、カープの対戦相手チームを応援する人のための席です。</p><div class="warning">GWやお盆の試合は売り切れやすいため、早めにチケットを確認しましょう。</div></div><div class="side"><div class="mini-title">SEAT IMAGE</div><div class="seat"><div class="infield">内野席</div><div class="visitor">ビジター<br>応援エリア</div><div class="field">FIELD</div><div class="carp">カープ<br>応援エリア</div><div class="home">ホーム側</div></div><p class="small">詳しい座席位置・ルールは購入前に公式座席図を確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人には、内野1階席がおすすめです。グラウンドが見やすく、落ち着いて観戦できます。応援を本格的に楽しみたい場合はカープパフォーマンス席も候補ですが、初観戦では少し上級者向けです。</p></aside></div></section>
 <section class="guide" id="access">
   <div class="num">3</div>
@@ -578,4 +602,55 @@ body{background:#fff}
 <section class="guide" id="event"><div class="num">9</div><div><div class="title-row"><h2>試合中のイベント</h2><span class="kicker">JOIN THE ENERGY</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>試合前にはスターティングメンバー発表や始球式があり、試合中にはイニング間イベントや大型ビジョンでの映像演出が行われます。</p><p>カープの応援は主に攻撃中に行われます。応援歌を知らなくても、周囲に合わせて拍手や手拍子をするだけで楽しめます。</p><p>7回表終了後、カープの7回裏の攻撃前にはジェット風船を飛ばします。風船を使う場合は、球場で販売されている専用のものを購入してください。</p></div><div class="side"><div class="mini-title">GAME DAY FLOW</div><div class="timeline"><div class="event"><b>試合前</b><span>選手紹介・始球式</span></div><div class="event"><b>攻撃中</b><span>応援歌・コール・拍手</span></div><div class="event"><b>7回</b><span>ジェット風船</span></div><div class="event"><b>試合後</b><span>ヒーローインタビュー</span></div></div></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めての人は、拍手やメガホンを使った応援から参加するのがおすすめです。カープらしい雰囲気を味わいたいなら、選手名に合わせて立ったり座ったりする「スクワット応援」と、7回のジェット風船に注目してください。</p></aside></div></section>
 <section class="guide" id="return"><div class="num">10</div><div><div class="title-row"><h2>帰り方</h2><span class="kicker">PLAN YOUR WAY HOME</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>試合後は、多くの観客が徒歩で広島駅へ向かいます。行きより混雑するため、スタジアムから広島駅までは徒歩約15〜20分を見込んでおきましょう。</p><p>広島駅では在来線も混雑します。特に宮島口・岩国方面へ向かう列車は利用者が多いため、新幹線や電車の時間には余裕を持つことをおすすめします。</p><p>野球は終了時刻が決まっていません。延長戦などで試合が長引くこともあるため、最終電車や新幹線を利用する場合は注意してください。</p><div class="warning">ナイトゲーム後に食事をする場合は、駅周辺の店が閉まっていることもあります。営業時間を事前に確認しましょう。</div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>混雑を避けたい場合は、試合終了の少し前に球場を出る方法もあります。ただし、勝利した日はヒーローインタビューや試合後の雰囲気も観戦の楽しみです。時間に余裕がある場合は、少し残ってから多くの観客の流れに沿って広島駅へ向かうのがおすすめです。</p></aside></div></div></section>
 </main>
-<footer class="footer"><div class="footer-in"><h2>KATTOBASE</h2><p>広島で野球を観る旅行者のための、個人制作・非公式ガイドです。チケット、運用、イベント、ルール、店舗情報などは変更される場合があります。観戦当日は必ず公式サイトの最新情報をご確認ください。</p><div class="sources"><a href="https://www.carp.co.jp/" target="_blank" rel="noopener">広島東洋カープ公式</a><a href="https://www.ticket.carp.co.jp/calendar/" target="_blank" rel="noopener">公式日程</a><a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener">公式チケット</a><a href="https://www.carp.co.jp/stadium/guide" target="_blank" rel="noopener">観戦ガイド</a><a href="https://www.carp.co.jp/stadium/rules" target="_blank" rel="noopener">観戦ルール</a></div><p class="smallfoot">© KATTOBASE. This is an unofficial personal guide and is not affiliated with Hiroshima Toyo Carp or MAZDA Zoom-Zoom Stadium Hiroshima.</p></div></footer><button class="top" type="button" aria-label="ページ上部へ戻る">↑</button><script>const b=document.querySelector('.top');const t=()=>b.classList.toggle('show',scrollY>650);addEventListener('scroll',t,{passive:true});t();b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));</script></body></html>
+<footer class="footer"><div class="footer-in"><h2>KATTOBASE</h2><p>広島で野球を観る旅行者のための、個人制作・非公式ガイドです。チケット、運用、イベント、ルール、店舗情報などは変更される場合があります。観戦当日は必ず公式サイトの最新情報をご確認ください。</p><div class="sources"><a href="https://www.carp.co.jp/" target="_blank" rel="noopener">広島東洋カープ公式</a><a href="https://www.ticket.carp.co.jp/calendar/" target="_blank" rel="noopener">公式日程</a><a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener">公式チケット</a><a href="https://www.carp.co.jp/stadium/guide" target="_blank" rel="noopener">観戦ガイド</a><a href="https://www.carp.co.jp/stadium/rules" target="_blank" rel="noopener">観戦ルール</a></div><p class="smallfoot">© KATTOBASE. This is an unofficial personal guide and is not affiliated with Hiroshima Toyo Carp or MAZDA Zoom-Zoom Stadium Hiroshima.</p></div></footer><button class="top" type="button" aria-label="ページ上部へ戻る">↑</button><script>const b=document.querySelector('.top');const t=()=>b.classList.toggle('show',scrollY>650);addEventListener('scroll',t,{passive:true});t();b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));</script>
+<script>
+(()=>{'use strict';
+const seatInfo={
+reserved_s:['指定席S','1階席','内野の指定席です。'],
+reserved:['指定席A','1階席','内野の指定席です。SVG内の同じエリアとしてまとめています。'],
+sunakaburi:['砂かぶり席','1階席','グラウンドに近いエリアです。'],
+surprise_terrace:['びっくりテラス','1階席','グループで観戦するテラス席のエリアです。'],
+outfield:['外野席（レフト・ライト）','1階席','外野エリアの座席です。'],
+outfield_annual_reserved:['外野年間指定席','1階席','年間指定席のエリアです。一般販売の有無は公式情報をご確認ください。'],
+nesoberia:['寝そべりあ','1階席','寝そべって観戦できるエリアです。'],
+outfield_surprise_terrace:['外野びっくりテラス','1階席','外野側にあるテラス席です。'],
+infield_group:['内野団体席','1階席','団体向けの内野席エリアです。'],
+carp_performance_b:['カープパフォーマンスB','2階席','カープを応援するためのエリアです。'],
+carp_performance_a:['カープパフォーマンスA','2階席','カープを応援するためのエリアです。'],
+performance_3b:['3塁側パフォーマンス席','2階席','3塁側のパフォーマンス席です。'],
+visitor_performance:['ビジターパフォーマンス席','2階席','ビジターチームを応援するためのエリアです。応援ルールを確認してください。'],
+sky_seat:['スカイシート','2階席','2階のスカイシートエリアです。'],
+lodge_3b:['ロッジ（三塁側）','2階席','三塁側のロッジ席です。'],
+lodge_1b:['ロッジ（一塁側）','2階席','一塁側のロッジ席です。'],
+terrace:['テラス席','2階席','2階のテラス席エリアです。'],
+infield_unreserved:['内野自由席','2階席','内野自由席のエリアです。販売方式は試合ごとにご確認ください。']
+};
+const map=document.getElementById('interactive-seat-map'),details=document.getElementById('interactive-seat-details');
+if(!map||!details)return;
+const select=(el,id)=>{
+ map.querySelectorAll('[data-seat-id].is-selected').forEach(n=>n.classList.remove('is-selected'));
+ el.classList.add('is-selected');
+ const [name,floor,description]=seatInfo[id];details.replaceChildren();
+ const title=document.createElement('h4');title.textContent=name;
+ const meta=document.createElement('p');meta.className='seat-meta';meta.textContent=floor;
+ const desc=document.createElement('p');desc.textContent=description;
+ details.append(title,meta,desc);
+};
+fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(xml=>{
+ const doc=new DOMParser().parseFromString(xml,'image/svg+xml');
+ if(doc.querySelector('parsererror'))throw Error('Invalid SVG');
+ const svg=doc.documentElement;
+ if(svg.localName!=='svg')throw Error('Invalid SVG root');
+ svg.removeAttribute('width');svg.removeAttribute('height');
+ svg.setAttribute('role','group');svg.setAttribute('aria-label','マツダスタジアムの座席図。色付き座席エリアを選択して詳細を確認できます。');
+ Object.keys(seatInfo).forEach(id=>{
+  const el=svg.querySelector('#'+id);if(!el)return;
+  el.dataset.seatId=id;el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',seatInfo[id][0]+'の詳細を表示');
+  el.addEventListener('click',()=>select(el,id));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(el,id)}});
+ });
+ svg.querySelectorAll('#layer1').forEach(n=>n.remove());
+ map.replaceChildren(document.importNode(svg,true));
+}).catch(err=>{map.textContent='座席図を読み込めませんでした。ページを再読み込みしてください。';console.error('Seat map load failed',err)});
+})();
+</script></body></html>
