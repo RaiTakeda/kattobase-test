@@ -623,7 +623,8 @@ sky_seat:['スカイシート','2階席','2階のスカイシートエリアで�
 lodge_3b:['ロッジ（三塁側）','2階席','三塁側のロッジ席です。'],
 lodge_1b:['ロッジ（一塁側）','2階席','一塁側のロッジ席です。'],
 terrace:['テラス席','2階席','2階のテラス席エリアです。'],
-infield_unreserved:['内野自由席','2階席','内野自由席のエリアです。販売方式は試合ごとにご確認ください。']
+infield_unreserved:['内野自由席','2階席','内野自由席のエリアです。販売方式は試合ごとにご確認ください。'],
+infield_reserved_2f:['内野指定席','2階席','2階内野の指定席エリアです。']
 };
 const map=document.getElementById('interactive-seat-map'),details=document.getElementById('interactive-seat-details');
 if(!map||!details)return;
@@ -643,14 +644,16 @@ fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Er
  if(svg.localName!=='svg')throw Error('Invalid SVG root');
  svg.removeAttribute('width');svg.removeAttribute('height');
  svg.setAttribute('role','group');svg.setAttribute('aria-label','マツダスタジアムの座席図。色付き座席エリアを選択して詳細を確認できます。');
+ svg.querySelectorAll('#layer1').forEach(n=>n.remove());
+ // Bind interactions on the actual displayed DOM, not on a source subsequently cloned.
+ const mountedSvg=document.importNode(svg,true);
+ map.replaceChildren(mountedSvg);
  Object.keys(seatInfo).forEach(id=>{
-  const el=svg.querySelector('#'+id);if(!el)return;
+  const el=mountedSvg.querySelector('#'+id);if(!el)return;
   el.dataset.seatId=id;el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',seatInfo[id][0]+'の詳細を表示');
   el.addEventListener('click',()=>select(el,id));
   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(el,id)}});
  });
- svg.querySelectorAll('#layer1').forEach(n=>n.remove());
- map.replaceChildren(document.importNode(svg,true));
 }).catch(err=>{map.textContent='座席図を読み込めませんでした。ページを再読み込みしてください。';console.error('Seat map load failed',err)});
 })();
 </script></body></html>
