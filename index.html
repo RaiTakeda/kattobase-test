@@ -391,6 +391,17 @@ body{background:#fff}
 .seat-dialog-close{position:sticky;top:0;float:right;border:0;border-radius:50%;background:#eef2f5;width:36px;height:36px;font-size:1.5rem;cursor:pointer;z-index:2}
 @media(max-width:760px){.seat-explorer-table,.seat-explorer-table tbody,.seat-explorer-table tr,.seat-explorer-table td{display:table-row!important}.seat-explorer-table{display:table!important}.seat-explorer-table tbody{display:table-row-group!important}.seat-explorer-table td{display:table-cell!important;width:auto!important;min-height:0!important;padding:.6rem .4rem!important}.seat-explorer-table td::before{display:none!important}.seat-explorer-table tr{display:table-row!important;border:0!important;border-radius:0!important}.seat-explorer-table .seat-price{white-space:nowrap}.seat-explorer-table button{font-size:.79rem}.seat-explorer #interactive-seat-details{display:none}.seat-view-switch{max-width:none}}
 
+
+/* Step 3: stadium approach map with responsive bilingual landmark labels */
+.access-map-block{margin:1rem 0 1.2rem}
+.access-map-wrap{position:relative;width:100%;max-width:860px;margin:0 auto;border:1px solid var(--line,#d9d9d9);border-radius:14px;overflow:hidden;background:#fff}
+.access-map-image{display:block;width:100%;height:auto}
+.access-map-label{position:absolute;z-index:2;background:#0d2d5e;color:#fff;font-size:clamp(.55rem,1.6vw,.82rem);font-weight:800;line-height:1.2;padding:.28rem .55rem;border-radius:8px;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.label-hiroshima-station{top:8%;left:8%}
+.label-matoba{top:70%;left:46%;transform:translateX(-50%)}
+.label-mazda{top:40%;right:8%}
+@media(max-width:760px){.access-map-label{font-size:clamp(.4rem,2vw,.68rem);padding:.22rem .42rem;border-radius:6px}.label-hiroshima-station{top:6%;left:6%}.label-matoba{top:72%;left:47%}.label-mazda{top:42%;right:5%}}
+
 </style>
 </head>
 <body>
@@ -532,38 +543,22 @@ body{background:#fff}
 <section class="guide" id="access">
   <div class="num">3</div>
   <div class="guide-body">
-    <div class="title-row"><h2>スタジアムへのアクセス</h2><span class="kicker">WALK FROM HIROSHIMA STATION</span></div>
-    <div class="label">BASIC INFO</div>
-    <p>マツダ スタジアムの最寄り駅は広島駅。南口から徒歩約10〜15分でアクセスできます。</p>
-    <aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>バスでもアクセスできますが、旅先で慣れない路線バスに乗るより、広島駅から徒歩で向かうのがおすすめです。</p></aside>
-    <figure class="access-figure access-figure-inline">
-      <h3>広島駅からスタジアムへ</h3>
-      <img src="images/guide-3-walking-route.svg" width="800" height="680" loading="lazy" alt="広島駅南口からカープロードを経てマツダ スタジアムへ向かう、徒歩約10〜15分の概念図">
-      <figcaption>仮図。実際の道順や曲がり角を示すものではありません。</figcaption>
-    </figure>
-    <p>カープロードには、選手紹介パネル、球団の歴史を紹介するモニュメント、赤いローソン、赤い東横インなどの見どころがあります。</p>
-    <div class="access-spots">
-      <h3>カープロードの見どころ</h3>
-      <p class="access-fineprint">画像は仮のピクトグラムです。後日、写真に差し替えます。</p>
-      <div class="access-spot-grid">
-        <figure class="access-spot"><img src="images/guide-3-spot-players.svg" width="640" height="370" loading="lazy" alt="選手紹介パネルの仮図"><figcaption>選手紹介パネル</figcaption></figure>
-        <figure class="access-spot"><img src="images/guide-3-spot-history.svg" width="640" height="370" loading="lazy" alt="歴史モニュメントの仮図"><figcaption>歴史モニュメント</figcaption></figure>
-        <figure class="access-spot"><img src="images/guide-3-spot-lawson.svg" width="640" height="370" loading="lazy" alt="赤いローソンの仮図"><figcaption>赤いローソン</figcaption></figure>
-        <figure class="access-spot"><img src="images/guide-3-spot-hotel.svg" width="640" height="370" loading="lazy" alt="赤い東横インの仮図"><figcaption>赤い東横イン</figcaption></figure>
+    <div class="title-row"><h2>スタジアムへのアクセス</h2></div>
+    <p>最寄り駅は広島駅、徒歩10分ほどで球場に到着します。</p>
+    <figure class="access-map-block">
+      <div class="access-map-wrap">
+        <img src="images/球場アクセス地図.svg" alt="広島駅・的場町・マツダスタジアム前の位置を示したアクセス地図" class="access-map-image" loading="lazy">
+        <span class="access-map-label label-hiroshima-station" data-i18n="access.hiroshimaStation">Hiroshima Station</span>
+        <span class="access-map-label label-matoba" data-i18n="access.matoba">Matoba-cho</span>
+        <span class="access-map-label label-mazda" data-i18n="access.mazdaStadiumMae">Mazda Stadium-mae</span>
       </div>
-    </div>
-    <p>チケットを持っている場合は、プロムナードを上って入場ゲートへ向かいます。チケットの購入・窓口引換が必要な場合は、プロムナードを上らず、球場正面のチケット売場へ向かってください。</p>
-    <aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>球場正面へ向かう途中には、元カープ選手・戸田隆矢さんによるキッチンカーが出店することもあります。出店状況は日によって異なります。</p></aside>
-    <figure class="access-figure access-figure-inline">
-      <h3>チケットの状態で進む方向が変わります</h3>
-      <img src="images/guide-3-ticket-route.svg" width="800" height="650" loading="lazy" alt="チケット所持者はプロムナードへ、購入や窓口引換が必要な場合は球場正面のチケット売場へ進む概念図">
-      <figcaption>仮図。窓口引換の有無は、Klookなど予約先の案内を確認してください。</figcaption>
     </figure>
-    <h3 class="access-subtitle">Google Maps</h3><p><a class="access-map-link" href="https://www.google.com/maps/search/?api=1&query=MAZDA%20Zoom-Zoom%20Stadium%20Hiroshima" target="_blank" rel="noopener noreferrer" aria-label="マツダ スタジアムをGoogle Mapsで開く">Google Mapsで球場を見る ↗</a></p>
-    <h3 class="access-subtitle">周辺のコンビニ</h3><ul class="access-store-list">
-        <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%BA%83%E5%B3%B6%E5%8D%97%E8%9F%B9%E5%B1%8B%E4%BA%8C%E4%B8%81%E7%9B%AE%E5%BA%97" target="_blank" rel="noopener noreferrer">ローソン 広島南蟹屋二丁目店 ↗</a></li>
-        <li><a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%BA%83%E5%B3%B6%E6%9D%B1%E8%8D%92%E7%A5%9E%E7%94%BA%E5%BA%97" target="_blank" rel="noopener noreferrer">ローソン 広島東荒神町店 ↗</a></li>
-      </ul>
+    <aside class="tip inline-tip">
+      <h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3>
+      <p>広島駅から徒歩で球場に向かうことをおすすめします。</p>
+      <p><strong>路面電車 的場町 / Matoba-cho：</strong>的場町へ向かう路面電車は本数があまりないうえに、球場への距離も広島駅とそれほど変わりません。</p>
+      <p><strong>バス マツダスタジアム前 / Mazda Stadium-mae：</strong>路線バスに慣れているなら利用してもよいですが、そうでない場合は徒歩またはタクシーの利用がおすすめです。</p>
+    </aside>
   </div>
 </section>
 <section class="guide" id="rules"><div class="num">4</div><div><div class="title-row"><h2>スタジアムルール</h2><span class="kicker">KNOW BEFORE YOU GO</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムでは、ビン・カン・ペットボトル類や危険物は持ち込めません。入場時には手荷物検査があります。</p><p>ビジターパフォーマンス席は、カープの対戦相手チームを応援する人のための席です。カープパフォーマンス席は、カープを応援する人のための席です。</p><p>再入場は可能ですが、外へ出る場合は再入場用の出口で手続きが必要です。</p><div class="tags"><span class="tag red">ビン・カン・PETボトル禁止</span><span class="tag">手荷物検査</span><span class="tag">再入場可</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>雨の日は、座席で傘を差すよりレインコートがおすすめです。大きな荷物は、広島駅やホテルに預けてから向かうと楽です。</p></aside></div></div></section>
