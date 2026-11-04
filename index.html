@@ -351,6 +351,39 @@ body{background:#fff}
 .interactive-seat-details h4{margin:0 0 .35rem;color:var(--navy);font-size:1.1rem}
 .interactive-seat-details p{margin:.2rem 0;font-size:.9rem;line-height:1.65}
 .interactive-seat-details .seat-meta{font-size:.78rem;color:var(--muted)}
+
+/* Step 2 shared seat-map and price-table explorer */
+.seat-explorer{margin:1.2rem 0 1.6rem;min-width:0}
+.seat-explorer h3{margin:0 0 .4rem;font-size:1rem;color:var(--navy)}
+.seat-guide-hint{font-size:.82rem!important;color:var(--muted);line-height:1.65;margin:.55rem 0!important}
+.seat-view-switch{display:flex;max-width:420px;width:100%;padding:4px;gap:4px;border-radius:12px;background:#e9eef4;margin:1rem 0}
+.seat-view-switch button{flex:1;border:0;border-radius:9px;background:transparent;color:#314b60;padding:.58rem .6rem;font:inherit;font-size:.87rem;font-weight:850;cursor:pointer}
+.seat-view-switch button[aria-selected="true"]{color:#fff;background:var(--navy);box-shadow:0 2px 6px #102a4325}
+.seat-view-switch button:focus-visible,.seat-explorer-table button:focus-visible{outline:3px solid #246cb2;outline-offset:2px}
+.seat-explorer [hidden]{display:none!important}
+.seat-explorer-table{width:100%;font-size:.84rem}
+.seat-explorer-table th:last-child,.seat-explorer-table td:last-child{text-align:right}
+.seat-explorer-table button{border:0;background:transparent;color:var(--navy);cursor:pointer;width:100%;text-align:left;font:inherit;font-weight:800;padding:.35rem 0}
+.seat-explorer-table tr:hover{background:#fff2f4}
+.seat-explorer-table .seat-price{font-weight:900;color:var(--red-dark)}
+.seat-details-content{display:grid;gap:.7rem}
+.seat-details-content h4{margin:0;color:var(--navy);font-size:1.16rem;line-height:1.45}
+.seat-details-content p{margin:0;font-size:.86rem;line-height:1.7}
+.seat-details-content .seat-detail-price{font-size:1.35rem;font-weight:950;color:var(--red-dark)}
+.seat-detail-meta{display:flex;gap:.45rem;flex-wrap:wrap}
+.seat-detail-meta span{background:#edf3f8;color:#26455e;border-radius:999px;padding:.18rem .65rem;font-size:.78rem;font-weight:850}
+.seat-photo-placeholder{min-height:125px;display:grid;place-items:center;text-align:center;border:1px dashed #b6c5cf;border-radius:11px;background:#f6f8fa;color:#667887;font-size:.85rem}
+.seat-detail-photo{width:100%;max-height:280px;object-fit:contain;border-radius:10px}
+.seat-detail-location{border:1px solid #dfe6ed;border-radius:11px;overflow:hidden;max-width:340px;background:#fff}
+.seat-detail-location svg{display:block;width:100%;height:auto}
+.seat-detail-location [data-seat-id]{opacity:.24;pointer-events:none}
+.seat-detail-location [data-seat-id].is-location{opacity:1;stroke:#c8102e!important;stroke-width:18!important;paint-order:stroke fill}
+.seat-details-content a{color:#095fa8;text-decoration:underline;text-underline-offset:3px;font-size:.86rem;font-weight:800}
+.seat-detail-dialog{border:0;border-radius:15px;padding:1.25rem;max-width:min(540px,calc(100vw - 24px));max-height:88dvh;width:100%;overflow:auto;box-shadow:0 18px 65px #0005;background:#fff}
+.seat-detail-dialog::backdrop{background:rgba(16,32,48,.65)}
+.seat-dialog-close{position:sticky;top:0;float:right;border:0;border-radius:50%;background:#eef2f5;width:36px;height:36px;font-size:1.5rem;cursor:pointer;z-index:2}
+@media(max-width:760px){.seat-explorer-table,.seat-explorer-table tbody,.seat-explorer-table tr,.seat-explorer-table td{display:table-row!important}.seat-explorer-table{display:table!important}.seat-explorer-table tbody{display:table-row-group!important}.seat-explorer-table td{display:table-cell!important;width:auto!important;min-height:0!important;padding:.6rem .4rem!important}.seat-explorer-table td::before{display:none!important}.seat-explorer-table tr{display:table-row!important;border:0!important;border-radius:0!important}.seat-explorer-table .seat-price{white-space:nowrap}.seat-explorer-table button{font-size:.79rem}.seat-explorer #interactive-seat-details{display:none}.seat-view-switch{max-width:none}}
+
 </style>
 </head>
 <body>
@@ -466,97 +499,28 @@ body{background:#fff}
 </section>
 <section class="guide" id="tickets"><div class="num">2</div><div><div class="title-row"><h2>チケットを購入</h2><span class="kicker">GET YOUR SEAT</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>チケットは、カープ公式ホームページ、マツダ スタジアム窓口、コンビニ・プレイガイドなどで購入できます。旅行前にオンラインで購入しておくと安心です。</p><h3 class="ticket-compare-title">PURCHASE METHODS</h3><div class="ticket-comparison" aria-label="チケット購入方法の比較"><div class="ticket-option"><h3>Online</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available from outside Japan</p><p>Ease of purchase: Low</p></div><div class="ticket-option"><h3>Convenience Stores</h3><p><span class="ticket-highlight">Available 24/7</span></p><p>Available only within Japan</p><p>Ease of purchase: High</p></div><div class="ticket-option"><h3>Stadium Ticket Office</h3><p><span class="ticket-highlight">Business hours only</span></p><p>Available at the stadium ticket office</p><p>Ease of purchase: Medium</p></div></div><p class="ticket-note">※販売条件や受付時間は、試合・座席・販売時期によって変わることがあります。購入前に公式情報を確認してください。</p>
 
-        <section class="seat-price-section" aria-labelledby="seat-price-title">
-          <h3 class="seat-price-title" id="seat-price-title">SEAT PRICE REFERENCE</h3>
-          <p class="seat-price-subtitle">Example ticket prices in JPY. Seat availability, sales conditions, and prices may change by game or season.</p>
-          <div class="seat-price-wrap">
-            <table class="seat-price-table">
-              <thead>
-                <tr>
-                  <th scope="col">Seat</th>
-                  <th scope="col">Area</th>
-                  <th scope="col">Level</th>
-                  <th scope="col">Age / Notes</th>
-                  <th scope="col">Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#FFC000"></span>Infield Reserved Seat A</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">1st floor</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥4,200</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#FFFF00"></span>Outfield Reserved Seat</span></td>
-                  <td class="seat-area" data-label="Area">Outfield</td>
-                  <td class="seat-level" data-label="Level">1st floor</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥2,500</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#92D050"></span>Sky Seat</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥3,300</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#00B050"></span>Carp Performance Seat</span></td>
-                  <td class="seat-area" data-label="Area">Outfield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥2,100</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#00B0F0"></span>Visitor Performance Seat</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥2,100</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#0070C0"></span>3B Performance Seat</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥2,100</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#002060"></span>Infield Reserved Seats</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 4 and over: same price as adults</td>
-                  <td class="seat-price" data-label="Price">¥2,500</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#7030A0"></span>Infield Unreserved Seat</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 16 and over</td>
-                  <td class="seat-price" data-label="Price">¥1,900</td>
-                </tr>
-                <tr>
-                  <td data-label="Seat"><span class="seat-name"><span class="seat-swatch" style="--seat-color:#7030A0"></span>Infield Unreserved Seat</span></td>
-                  <td class="seat-area" data-label="Area">Infield</td>
-                  <td class="seat-level" data-label="Level">Upper deck</td>
-                  <td class="seat-age" data-label="Age / Notes">Ages 15 and under</td>
-                  <td class="seat-price" data-label="Price">¥900</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="seat-price-note">The color markers are a simple reference for the seat categories in this guide. Always check the official seat map and ticket page before purchasing.</p>
-        </section>
-<section class="interactive-seat-section" aria-labelledby="interactive-seat-heading">
-<h3 id="interactive-seat-heading">SEAT MAP</h3>
-<p class="interactive-seat-intro">座席図の色付きエリアをタップ（クリック）すると、下に座席情報を表示します。</p>
+        <section class="seat-explorer" aria-labelledby="seat-explorer-heading">
+<h3 id="seat-explorer-heading">SEAT GUIDE</h3>
+<p class="seat-guide-hint">座席の位置と価格を切り替えて確認できます。座席図のエリア、または価格表の行を選択してください。</p>
+<div class="seat-view-switch" role="tablist" aria-label="座席ガイド表示の切り替え">
+<button type="button" role="tab" id="seat-map-tab" aria-selected="true" aria-controls="seat-map-panel">座席図</button>
+<button type="button" role="tab" id="seat-price-tab" aria-selected="false" aria-controls="seat-price-panel" tabindex="-1">価格表</button>
+</div>
+<div id="seat-map-panel" role="tabpanel" aria-labelledby="seat-map-tab">
 <div id="interactive-seat-map" class="interactive-seat-map" aria-label="マツダスタジアムの座席図"><p class="interactive-seat-loading">座席図を読み込んでいます…</p></div>
-<div id="interactive-seat-details" class="interactive-seat-details" aria-live="polite" aria-atomic="true"><p>座席エリアを選択してください。</p></div>
-<p class="interactive-seat-note">座席配置は概略図です。実際の座席区分・販売状況・価格は公式サイトで確認してください。</p>
+<p class="seat-guide-hint">色付きの座席エリアを選択すると詳細を表示します。</p>
+</div>
+<div id="seat-price-panel" role="tabpanel" aria-labelledby="seat-price-tab" hidden>
+<div class="seat-price-wrap"><table class="seat-price-table seat-explorer-table"><thead><tr><th scope="col">Seat</th><th scope="col">Price</th></tr></thead><tbody id="seat-explorer-rows"></tbody></table></div>
+<p class="seat-guide-hint">価格は参考額です。空席状況・年齢区分・販売方法・最新価格は公式情報で確認してください。</p>
+</div>
+<div id="interactive-seat-details" class="interactive-seat-details" aria-live="polite"><p>座席を選択すると詳細情報が表示されます。</p></div>
+<dialog id="seat-detail-dialog" class="seat-detail-dialog" aria-labelledby="seat-dialog-title">
+<button class="seat-dialog-close" type="button" aria-label="詳細を閉じる">×</button>
+<div id="seat-dialog-content"></div>
+</dialog>
 </section>
-        <p>空席があれば、当日券を球場窓口で購入できることもあります。座席を選ぶときは、「ビジター席」に注意してください。ビジター席は旅行者向けではなく、カープの対戦相手チームを応援する人のための席です。</p><div class="warning">GWやお盆の試合は売り切れやすいため、早めにチケットを確認しましょう。</div></div><div class="side"><div class="mini-title">SEAT IMAGE</div><div class="seat"><div class="infield">内野席</div><div class="visitor">ビジター<br>応援エリア</div><div class="field">FIELD</div><div class="carp">カープ<br>応援エリア</div><div class="home">ホーム側</div></div><p class="small">詳しい座席位置・ルールは購入前に公式座席図を確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人には、内野1階席がおすすめです。グラウンドが見やすく、落ち着いて観戦できます。応援を本格的に楽しみたい場合はカープパフォーマンス席も候補ですが、初観戦では少し上級者向けです。</p></aside></div></section>
+<p>空席があれば、当日券を球場窓口で購入できることもあります。座席を選ぶときは、「ビジター席」に注意してください。ビジター席は旅行者向けではなく、カープの対戦相手チームを応援する人のための席です。</p><div class="warning">GWやお盆の試合は売り切れやすいため、早めにチケットを確認しましょう。</div></div><div class="side"><div class="mini-title">SEAT IMAGE</div><div class="seat"><div class="infield">内野席</div><div class="visitor">ビジター<br>応援エリア</div><div class="field">FIELD</div><div class="carp">カープ<br>応援エリア</div><div class="home">ホーム側</div></div><p class="small">詳しい座席位置・ルールは購入前に公式座席図を確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人には、内野1階席がおすすめです。グラウンドが見やすく、落ち着いて観戦できます。応援を本格的に楽しみたい場合はカープパフォーマンス席も候補ですが、初観戦では少し上級者向けです。</p></aside></div></section>
 <section class="guide" id="access">
   <div class="num">3</div>
   <div class="guide-body">
@@ -605,55 +569,106 @@ body{background:#fff}
 <footer class="footer"><div class="footer-in"><h2>KATTOBASE</h2><p>広島で野球を観る旅行者のための、個人制作・非公式ガイドです。チケット、運用、イベント、ルール、店舗情報などは変更される場合があります。観戦当日は必ず公式サイトの最新情報をご確認ください。</p><div class="sources"><a href="https://www.carp.co.jp/" target="_blank" rel="noopener">広島東洋カープ公式</a><a href="https://www.ticket.carp.co.jp/calendar/" target="_blank" rel="noopener">公式日程</a><a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener">公式チケット</a><a href="https://www.carp.co.jp/stadium/guide" target="_blank" rel="noopener">観戦ガイド</a><a href="https://www.carp.co.jp/stadium/rules" target="_blank" rel="noopener">観戦ルール</a></div><p class="smallfoot">© KATTOBASE. This is an unofficial personal guide and is not affiliated with Hiroshima Toyo Carp or MAZDA Zoom-Zoom Stadium Hiroshima.</p></div></footer><button class="top" type="button" aria-label="ページ上部へ戻る">↑</button><script>const b=document.querySelector('.top');const t=()=>b.classList.toggle('show',scrollY>650);addEventListener('scroll',t,{passive:true});t();b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));</script>
 <script>
 (()=>{'use strict';
-const seatInfo={
-reserved_s:['指定席S','1階席','内野の指定席です。'],
-reserved:['指定席A','1階席','内野の指定席です。SVG内の同じエリアとしてまとめています。'],
-sunakaburi:['砂かぶり席','1階席','グラウンドに近いエリアです。'],
-surprise_terrace:['びっくりテラス','1階席','グループで観戦するテラス席のエリアです。'],
-outfield:['外野席（レフト・ライト）','1階席','外野エリアの座席です。'],
-outfield_annual_reserved:['外野年間指定席','1階席','年間指定席のエリアです。一般販売の有無は公式情報をご確認ください。'],
-nesoberia:['寝そべりあ','1階席','寝そべって観戦できるエリアです。'],
-outfield_surprise_terrace:['外野びっくりテラス','1階席','外野側にあるテラス席です。'],
-infield_group:['内野団体席','1階席','団体向けの内野席エリアです。'],
-carp_performance_b:['カープパフォーマンスB','2階席','カープを応援するためのエリアです。'],
-carp_performance_a:['カープパフォーマンスA','2階席','カープを応援するためのエリアです。'],
-performance_3b:['3塁側パフォーマンス席','2階席','3塁側のパフォーマンス席です。'],
-visitor_performance:['ビジターパフォーマンス席','2階席','ビジターチームを応援するためのエリアです。応援ルールを確認してください。'],
-sky_seat:['スカイシート','2階席','2階のスカイシートエリアです。'],
-lodge_3b:['ロッジ（三塁側）','2階席','三塁側のロッジ席です。'],
-lodge_1b:['ロッジ（一塁側）','2階席','一塁側のロッジ席です。'],
-terrace:['テラス席','2階席','2階のテラス席エリアです。'],
-infield_unreserved:['内野自由席','2階席','内野自由席のエリアです。販売方式は試合ごとにご確認ください。'],
-infield_reserved_2f:['内野指定席','2階席','2階内野の指定席エリアです。']
-};
-const map=document.getElementById('interactive-seat-map'),details=document.getElementById('interactive-seat-details');
-if(!map||!details)return;
-const select=(el,id)=>{
- map.querySelectorAll('[data-seat-id].is-selected').forEach(n=>n.classList.remove('is-selected'));
- el.classList.add('is-selected');
- const [name,floor,description]=seatInfo[id];details.replaceChildren();
- const title=document.createElement('h4');title.textContent=name;
- const meta=document.createElement('p');meta.className='seat-meta';meta.textContent=floor;
- const desc=document.createElement('p');desc.textContent=description;
- details.append(title,meta,desc);
-};
-fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(xml=>{
- const doc=new DOMParser().parseFromString(xml,'image/svg+xml');
- if(doc.querySelector('parsererror'))throw Error('Invalid SVG');
- const svg=doc.documentElement;
- if(svg.localName!=='svg')throw Error('Invalid SVG root');
- svg.removeAttribute('width');svg.removeAttribute('height');
- svg.setAttribute('role','group');svg.setAttribute('aria-label','マツダスタジアムの座席図。色付き座席エリアを選択して詳細を確認できます。');
- svg.querySelectorAll('#layer1').forEach(n=>n.remove());
- // Bind interactions on the actual displayed DOM, not on a source subsequently cloned.
- const mountedSvg=document.importNode(svg,true);
- map.replaceChildren(mountedSvg);
- Object.keys(seatInfo).forEach(id=>{
-  const el=mountedSvg.querySelector('#'+id);if(!el)return;
-  el.dataset.seatId=id;el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',seatInfo[id][0]+'の詳細を表示');
-  el.addEventListener('click',()=>select(el,id));
-  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(el,id)}});
+const officialUrl='https://www.carp.co.jp/ticket/';
+/* One seat record is shared by SVG geometry, price-table row and detail display.
+   Price values below follow the existing reference table, not a newly verified tariff. */
+const seats=[
+{id:'reserved_s',name:'指定席S',area:'内野',floor:1,svg:['reserved_s'],feature:'グラウンドに近い内野の指定席です。'},
+{id:'reserved_a',name:'内野指定席A',area:'内野',floor:1,price:4200,svg:['reserved'],feature:'内野の指定席で、グラウンドを見渡せるエリアです。'},
+{id:'sunakaburi',name:'砂かぶり席',area:'内野',floor:1,svg:['sunakaburi'],feature:'グラウンドに近い特別席です。'},
+{id:'surprise_terrace',name:'びっくりテラス',area:'外野',floor:1,svg:['surprise_terrace'],feature:'グループ向けテラス席です。',note:'席単位ではなくグループ単位の販売条件がある場合があります。'},
+{id:'outfield',name:'外野指定席',area:'外野',floor:1,price:2500,svg:['outfield'],feature:'外野席からフィールドを眺められます。'},
+{id:'outfield_annual_reserved',name:'外野年間指定席',area:'外野',floor:1,svg:['outfield_annual_reserved'],feature:'年間指定席として設けられているエリアです。',note:'一般販売の有無を公式情報で確認してください。'},
+{id:'nesoberia',name:'寝そべりあ',area:'外野',floor:1,svg:['nesoberia'],feature:'寝そべって観戦できる特色ある座席です。'},
+{id:'outfield_surprise_terrace',name:'外野びっくりテラス',area:'外野',floor:1,svg:['outfield_surprise_terrace'],feature:'外野側のグループ向けテラス席です。'},
+{id:'infield_group',name:'内野団体席',area:'内野',floor:1,svg:['infield_group'],feature:'団体向けの観戦エリアです。',note:'個人旅行者が購入できるとは限りません。'},
+{id:'carp_performance',name:'カープパフォーマンス席',area:'外野',floor:2,price:2100,svg:['carp_performance_a','carp_performance_b'],feature:'カープの応援を楽しめる座席です。',note:'応援ルールや販売条件を確認してください。'},
+{id:'performance_3b',name:'3塁側パフォーマンス席',area:'内野',floor:2,price:2100,svg:['performance_3b'],feature:'三塁側のパフォーマンス席です。'},
+{id:'visitor_performance',name:'ビジターパフォーマンス席',area:'外野',floor:2,price:2100,svg:['visitor_performance'],feature:'ビジターチームの応援エリアです。',note:'カープの応援・グッズに制限があります。'},
+{id:'sky_seat',name:'スカイシート',area:'内野',floor:2,price:3300,svg:['sky_seat'],feature:'2階席からグラウンドを見渡せます。'},
+{id:'lodge_3b',name:'ロッジ（三塁側）',area:'内野',floor:2,svg:['lodge_3b'],feature:'三塁側のロッジ席です。'},
+{id:'lodge_1b',name:'ロッジ（一塁側）',area:'内野',floor:2,svg:['lodge_1b'],feature:'一塁側のロッジ席です。'},
+{id:'terrace',name:'テラス席',area:'内野',floor:2,svg:['terrace'],feature:'内野側のテラス席です。'},
+{id:'infield_unreserved',name:'内野自由席',area:'内野',floor:2,price:1900,svg:['infield_unreserved'],feature:'2階内野の自由席エリアです。',note:'年齢によって料金が異なる場合があります。'},
+{id:'infield_reserved_2f',name:'内野指定席（2階）',area:'内野',floor:2,price:2500,svg:['infield_reserved_2f'],feature:'2階内野の指定席エリアです。'}
+];
+const byGeometry=new Map(seats.flatMap(seat=>seat.svg.map(id=>[id,seat])));
+const map=document.getElementById('interactive-seat-map'),details=document.getElementById('interactive-seat-details'),dialog=document.getElementById('seat-detail-dialog'),dialogBody=document.getElementById('seat-dialog-content'),rows=document.getElementById('seat-explorer-rows');
+const mapTab=document.getElementById('seat-map-tab'),priceTab=document.getElementById('seat-price-tab'),mapPanel=document.getElementById('seat-map-panel'),pricePanel=document.getElementById('seat-price-panel');
+if(!map||!details||!dialog||!rows)return;
+const mobile=()=>matchMedia('(max-width:760px)').matches;
+const priceText=seat=>seat.price?'¥'+seat.price.toLocaleString('ja-JP')+'（参考）':'価格は公式サイトで確認';
+let selected=null,lastTrigger=null;
+function switchView(mode){
+ const isMap=mode==='map';mapPanel.hidden=!isMap;pricePanel.hidden=isMap;
+ mapTab.setAttribute('aria-selected',String(isMap));priceTab.setAttribute('aria-selected',String(!isMap));
+ mapTab.tabIndex=isMap?0:-1;priceTab.tabIndex=isMap?-1:0;
+}
+for(const [tab,mode] of [[mapTab,'map'],[priceTab,'price']])tab.addEventListener('click',()=>switchView(mode));
+function markSelection(seat){
+ map.querySelectorAll('[data-seat-id]').forEach(el=>{const active=seat.svg.includes(el.dataset.seatId);el.classList.toggle('is-selected',active);el.setAttribute('aria-pressed',String(active))});
+ rows.querySelectorAll('tr[data-seat]').forEach(el=>el.classList.toggle('is-selected',el.dataset.seat===seat.id));
+}
+function makeLocation(seat){
+ const wrapper=document.createElement('div');wrapper.className='seat-detail-location';
+ const source=map.querySelector('svg');if(!source){wrapper.textContent='座席位置図を読み込み中です。';return wrapper}
+ const cloned=source.cloneNode(true);
+ cloned.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+ cloned.querySelectorAll('[data-seat-id]').forEach(el=>{
+   const active=seat.svg.includes(el.dataset.seatId);
+   el.classList.toggle('is-location',active);el.classList.remove('is-selected');
+   el.removeAttribute('tabindex');el.removeAttribute('role');el.removeAttribute('aria-label');
  });
-}).catch(err=>{map.textContent='座席図を読み込めませんでした。ページを再読み込みしてください。';console.error('Seat map load failed',err)});
+ cloned.removeAttribute('role');cloned.setAttribute('aria-label','選択した座席を赤い輪郭で強調した座席位置図');
+ wrapper.append(cloned);return wrapper;
+}
+function makeDetails(seat){
+ const wrap=document.createElement('div');wrap.className='seat-details-content';
+ const heading=document.createElement('h4');heading.textContent=seat.name;
+ const photo=document.createElement('div');photo.className='seat-photo-placeholder';photo.textContent='座席写真：準備中';
+ const price=document.createElement('p');price.className='seat-detail-price';price.textContent=priceText(seat);
+ const meta=document.createElement('div');meta.className='seat-detail-meta';
+ for(const txt of [seat.area,seat.floor+'階席']){const span=document.createElement('span');span.textContent=txt;meta.append(span)}
+ const ft=document.createElement('p');ft.textContent='特徴：'+seat.feature;
+ const note=document.createElement('p');note.textContent='注意点：'+(seat.note||'座席ごとの利用条件・販売方法は公式情報を確認してください。');
+ const locationTitle=document.createElement('strong');locationTitle.textContent='座席位置';
+ const loc=makeLocation(seat);
+ const official=document.createElement('a');official.href=officialUrl;official.target='_blank';official.rel='noopener noreferrer';official.textContent='カープ公式チケット・販売案内を見る';
+ wrap.append(heading,photo,price,meta,ft,note,locationTitle,loc,official);
+ return wrap;
+}
+function selectSeat(seat,trigger){
+ selected=seat;lastTrigger=trigger;markSelection(seat);
+ const content=makeDetails(seat);
+ details.replaceChildren(content);
+ if(mobile()){
+  dialogBody.replaceChildren(makeDetails(seat));
+  if(!dialog.open)dialog.showModal();
+ }
+}
+dialog.querySelector('.seat-dialog-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+dialog.addEventListener('close',()=>{if(lastTrigger&&lastTrigger.isConnected)lastTrigger.focus({preventScroll:true})});
+for(const seat of seats){
+ const tr=document.createElement('tr');tr.dataset.seat=seat.id;
+ const td=document.createElement('td'),btn=document.createElement('button');btn.type='button';btn.textContent=seat.name;btn.setAttribute('aria-label',seat.name+'の詳細');btn.addEventListener('click',()=>selectSeat(seat,btn));td.append(btn);
+ const cost=document.createElement('td');cost.className='seat-price';cost.textContent=priceText(seat);
+ tr.append(td,cost);rows.append(tr);
+}
+fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(xml=>{
+ const parsed=new DOMParser().parseFromString(xml,'image/svg+xml');
+ if(parsed.querySelector('parsererror'))throw Error('Invalid SVG');
+ const svg=parsed.documentElement;if(svg.localName!=='svg')throw Error('Invalid SVG root');
+ svg.querySelector('#layer1')?.remove();
+ svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('role','group');svg.setAttribute('aria-label','マツダスタジアム座席図');
+ const mounted=document.importNode(svg,true);map.replaceChildren(mounted);
+ for(const [id,seat] of byGeometry){
+  const el=mounted.querySelector('#'+id);if(!el){console.warn('SVG seat ID not found:',id);continue}
+  el.dataset.seatId=id;el.setAttribute('role','button');el.setAttribute('tabindex','0');el.setAttribute('aria-label',seat.name+'の詳細');el.setAttribute('aria-pressed','false');
+  el.addEventListener('click',()=>selectSeat(seat,el));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectSeat(seat,el)}});
+ }
+ if(selected)markSelection(selected);
+}).catch(e=>{map.textContent='座席図を読み込めませんでした。';console.error('Failed to load seat SVG',e)});
 })();
 </script></body></html>
