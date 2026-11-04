@@ -366,6 +366,13 @@ body{background:#fff}
 .seat-explorer-table button{border:0;background:transparent;color:var(--navy);cursor:pointer;width:100%;text-align:left;font:inherit;font-weight:800;padding:.35rem 0}
 .seat-explorer-table tr:hover{background:#fff2f4}
 .seat-explorer-table .seat-price{font-weight:900;color:var(--red-dark)}
+.seat-explorer-table tr.seat-category-row th{background:#6b7480;color:white;text-align:left;font-size:.82rem;font-weight:900;padding:.58rem .7rem}
+.seat-explorer-table tr.seat-limited-row{background:#e2e5e9!important}
+.seat-explorer-table tr.seat-limited-row:hover{background:#d2d8df!important}
+.seat-explorer-table tr.seat-limited-row button{color:#3d4854}
+.seat-explorer-table tr[data-seat]{cursor:pointer}
+.seat-explorer-table tr.is-selected td{box-shadow:inset 0 0 0 1px #bc4e61}
+.seat-guide-limited-note{font-size:.77rem!important;color:#55616c!important;margin:.55rem 0!important;line-height:1.6}
 .seat-details-content{display:grid;gap:.7rem}
 .seat-details-content h4{margin:0;color:var(--navy);font-size:1.16rem;line-height:1.45}
 .seat-details-content p{margin:0;font-size:.86rem;line-height:1.7}
@@ -376,8 +383,8 @@ body{background:#fff}
 .seat-detail-photo{width:100%;max-height:280px;object-fit:contain;border-radius:10px}
 .seat-detail-location{border:1px solid #dfe6ed;border-radius:11px;overflow:hidden;max-width:340px;background:#fff}
 .seat-detail-location svg{display:block;width:100%;height:auto}
-.seat-detail-location [data-seat-id]{opacity:.24;pointer-events:none}
-.seat-detail-location [data-seat-id].is-location{opacity:1;stroke:#c8102e!important;stroke-width:18!important;paint-order:stroke fill}
+.seat-detail-location [data-seat-id]{fill:#bfc3ca!important;fill-opacity:1!important;opacity:1!important;pointer-events:none;stroke:#f5f5f5!important;stroke-width:5!important}
+.seat-detail-location [data-seat-id].is-location{fill:#ff0000!important;fill-opacity:1!important;opacity:1!important;stroke:#c8102e!important;stroke-width:9!important;paint-order:stroke fill}
 .seat-details-content a{color:#095fa8;text-decoration:underline;text-underline-offset:3px;font-size:.86rem;font-weight:800}
 .seat-detail-dialog{border:0;border-radius:15px;padding:1.25rem;max-width:min(540px,calc(100vw - 24px));max-height:88dvh;width:100%;overflow:auto;box-shadow:0 18px 65px #0005;background:#fff}
 .seat-detail-dialog::backdrop{background:rgba(16,32,48,.65)}
@@ -513,11 +520,12 @@ body{background:#fff}
 <div id="seat-price-panel" role="tabpanel" aria-labelledby="seat-price-tab" hidden>
 <div class="seat-price-wrap"><table class="seat-price-table seat-explorer-table"><thead><tr><th scope="col">Seat</th><th scope="col">Price</th></tr></thead><tbody id="seat-explorer-rows"></tbody></table></div>
 <p class="seat-guide-hint">価格は参考額です。空席状況・年齢区分・販売方法・最新価格は公式情報で確認してください。</p>
+<p class="seat-guide-limited-note">グレーの行は年間指定席・購入が難しい特別席の参考情報です。必ずしも全試合で販売されないという意味ではありません。販売状況は公式情報をご確認ください。</p>
 </div>
 <div id="interactive-seat-details" class="interactive-seat-details" aria-live="polite"><p>座席を選択すると詳細情報が表示されます。</p></div>
 <dialog id="seat-detail-dialog" class="seat-detail-dialog" aria-labelledby="seat-dialog-title">
 <button class="seat-dialog-close" type="button" aria-label="詳細を閉じる">×</button>
-<div id="seat-dialog-content"></div>
+<div id="seat-dialog-content"><h4 id="seat-dialog-title">座席情報</h4></div>
 </dialog>
 </section>
 <p>空席があれば、当日券を球場窓口で購入できることもあります。座席を選ぶときは、「ビジター席」に注意してください。ビジター席は旅行者向けではなく、カープの対戦相手チームを応援する人のための席です。</p><div class="warning">GWやお盆の試合は売り切れやすいため、早めにチケットを確認しましょう。</div></div><div class="side"><div class="mini-title">SEAT IMAGE</div><div class="seat"><div class="infield">内野席</div><div class="visitor">ビジター<br>応援エリア</div><div class="field">FIELD</div><div class="carp">カープ<br>応援エリア</div><div class="home">ホーム側</div></div><p class="small">詳しい座席位置・ルールは購入前に公式座席図を確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人には、内野1階席がおすすめです。グラウンドが見やすく、落ち着いて観戦できます。応援を本格的に楽しみたい場合はカープパフォーマンス席も候補ですが、初観戦では少し上級者向けです。</p></aside></div></section>
@@ -589,7 +597,7 @@ const seats=[
 {id:'lodge_3b',name:'ロッジ（三塁側）',area:'内野',floor:2,svg:['lodge_3b'],feature:'三塁側のロッジ席です。'},
 {id:'lodge_1b',name:'ロッジ（一塁側）',area:'内野',floor:2,svg:['lodge_1b'],feature:'一塁側のロッジ席です。'},
 {id:'terrace',name:'テラス席',area:'内野',floor:2,svg:['terrace'],feature:'内野側のテラス席です。'},
-{id:'infield_unreserved',name:'内野自由席',area:'内野',floor:2,price:1900,svg:['infield_unreserved'],feature:'2階内野の自由席エリアです。',note:'年齢によって料金が異なる場合があります。'},
+{id:'infield_unreserved',name:'内野自由席',area:'内野',floor:2,price:1900,childPrice:900,svg:['infield_unreserved'],feature:'2階内野の自由席エリアです。',note:'大人・子供の料金区分や年齢条件は公式情報を確認してください。'},
 {id:'infield_reserved_2f',name:'内野指定席（2階）',area:'内野',floor:2,price:2500,svg:['infield_reserved_2f'],feature:'2階内野の指定席エリアです。'}
 ];
 const byGeometry=new Map(seats.flatMap(seat=>seat.svg.map(id=>[id,seat])));
@@ -597,7 +605,8 @@ const map=document.getElementById('interactive-seat-map'),details=document.getEl
 const mapTab=document.getElementById('seat-map-tab'),priceTab=document.getElementById('seat-price-tab'),mapPanel=document.getElementById('seat-map-panel'),pricePanel=document.getElementById('seat-price-panel');
 if(!map||!details||!dialog||!rows)return;
 const mobile=()=>matchMedia('(max-width:760px)').matches;
-const priceText=seat=>seat.price?'¥'+seat.price.toLocaleString('ja-JP')+'（参考）':'価格は公式サイトで確認';
+const formatJPY=value=>'¥'+value.toLocaleString('ja-JP');
+const priceText=seat=>seat.childPrice!=null?'大人 '+formatJPY(seat.price)+'／子供 '+formatJPY(seat.childPrice)+'（参考）':seat.price?'¥'+seat.price.toLocaleString('ja-JP')+'（参考）':'価格は公式サイトで確認';
 let selected=null,lastTrigger=null;
 function switchView(mode){
  const isMap=mode==='map';mapPanel.hidden=!isMap;pricePanel.hidden=isMap;
@@ -619,7 +628,7 @@ function makeLocation(seat){
    el.classList.toggle('is-location',active);el.classList.remove('is-selected');
    el.removeAttribute('tabindex');el.removeAttribute('role');el.removeAttribute('aria-label');
  });
- cloned.removeAttribute('role');cloned.setAttribute('aria-label','選択した座席を赤い輪郭で強調した座席位置図');
+ cloned.removeAttribute('role');cloned.setAttribute('aria-label','選択した座席を赤色、ほかの座席をグレーで表示した位置図');
  wrapper.append(cloned);return wrapper;
 }
 function makeDetails(seat){
@@ -649,12 +658,30 @@ function selectSeat(seat,trigger){
 dialog.querySelector('.seat-dialog-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 dialog.addEventListener('close',()=>{if(lastTrigger&&lastTrigger.isConnected)lastTrigger.focus({preventScroll:true})});
-for(const seat of seats){
- const tr=document.createElement('tr');tr.dataset.seat=seat.id;
- const td=document.createElement('td'),btn=document.createElement('button');btn.type='button';btn.textContent=seat.name;btn.setAttribute('aria-label',seat.name+'の詳細');btn.addEventListener('click',()=>selectSeat(seat,btn));td.append(btn);
- const cost=document.createElement('td');cost.className='seat-price';cost.textContent=priceText(seat);
+// Explicit display order: regular seats, annual seats, then hard-to-obtain special seats.
+const regular=['reserved_a','sky_seat','infield_reserved_2f','infield_unreserved:adult','infield_unreserved:child','outfield','carp_performance','performance_3b','visitor_performance'];
+const annual=['reserved_s','outfield_annual_reserved'];
+const special=['sunakaburi','surprise_terrace','nesoberia','outfield_surprise_terrace','infield_group','lodge_3b','lodge_1b','terrace'];
+const seatById=new Map(seats.map(seat=>[seat.id,seat]));
+function addCategory(name){
+ const tr=document.createElement('tr');tr.className='seat-category-row';
+ const th=document.createElement('th');th.colSpan=2;th.scope='rowgroup';th.textContent='▼'+name;tr.append(th);rows.append(tr);
+}
+function addPriceRow(key,limited=false){
+ const [id,variant]=key.split(':');const seat=seatById.get(id);if(!seat)throw Error('Unknown seat '+id);
+ const tr=document.createElement('tr');tr.dataset.seat=id;if(limited)tr.classList.add('seat-limited-row');
+ const td=document.createElement('td'),btn=document.createElement('button');btn.type='button';
+ btn.textContent=variant==='adult'?'内野自由席（大人）':variant==='child'?'内野自由席（子供）':seat.name;
+ btn.setAttribute('aria-label',btn.textContent+'の詳細');
+ btn.addEventListener('click',()=>selectSeat(seat,btn));td.append(btn);
+ tr.addEventListener('click',e=>{if(e.target.closest('button'))return;selectSeat(seat,btn)});
+ const cost=document.createElement('td');cost.className='seat-price';
+ cost.textContent=variant==='adult'?formatJPY(seat.price)+'（参考）':variant==='child'?formatJPY(seat.childPrice)+'（参考）':seat.childPrice!=null?priceText(seat):seat.price?formatJPY(seat.price)+'（参考）':'価格は公式サイトで確認';
  tr.append(td,cost);rows.append(tr);
 }
+regular.forEach(id=>addPriceRow(id));
+addCategory('年間指定席');annual.forEach(id=>addPriceRow(id,true));
+addCategory('完売必須席');special.forEach(id=>addPriceRow(id,true));
 fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(xml=>{
  const parsed=new DOMParser().parseFromString(xml,'image/svg+xml');
  if(parsed.querySelector('parsererror'))throw Error('Invalid SVG');
