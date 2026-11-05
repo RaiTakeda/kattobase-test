@@ -39,30 +39,86 @@ main{max-width:840px;margin:0 auto;padding:1.1rem 1rem 3.5rem}
 .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.85rem}
 .actions button,.actions a{display:inline-flex;justify-content:center;align-items:center;gap:.25rem;border:1px solid var(--navy);border-radius:12px;padding:.75rem 1rem;font-size:.9rem;font-weight:900;cursor:pointer;text-decoration:none}
 .actions button{background:var(--navy);color:#fff;flex:1}.actions a{color:var(--navy);background:#fff}
+.actions #change-seat{background:#fff;color:var(--navy);flex:0 1 auto}
 .notice{font-size:.81rem;line-height:1.65;color:var(--muted);margin:1rem 0}
 .empty{border-left:4px solid var(--red);background:#fff3f5;padding:1rem;border-radius:9px}
 footer{border-top:1px solid var(--line);padding:1.3rem;text-align:center;font-size:.75rem;color:var(--muted)}
 @media(max-width:500px){.panel{padding:.85rem .9rem}.show-content{padding:.95rem .8rem}.count-row{gap:.5rem}.counter{padding:.5rem}.counter-tools button{width:40px;height:41px}.choice span{font-size:.83rem;padding:.4rem .25rem}}
 @media print{.topbar,.config,.actions,.intro,.notice,footer,.show-note{display:none!important}main{padding:0}.show-panel{margin:0;border:0}.show-title{background:#fff;color:#111}.jp-message{font-size:24pt}}
+
+/* Embedded interactive seat selector, separate from the main-page selector */
+.helper-tabs{display:flex;gap:4px;background:#e9eef4;border-radius:12px;padding:4px;margin:1rem 0}
+.helper-tabs button{flex:1;background:transparent;border:0;border-radius:9px;padding:.65rem .45rem;font:inherit;font-weight:850;color:var(--navy);cursor:pointer}
+.helper-tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+.helper-tabs button:focus-visible,.helper-price-table button:focus-visible,.helper-confirm:focus-visible{outline:3px solid #4472c4;outline-offset:2px}
+#helper-map-panel[hidden],#helper-price-panel[hidden]{display:none!important}
+.helper-map{border:1px solid #dbe3e9;border-radius:12px;overflow:hidden;background:#fff;min-height:100px}
+.helper-map svg{display:block;width:100%;height:auto}
+.helper-map [data-seat]{cursor:pointer}
+.helper-map [data-seat]:hover,.helper-map [data-seat]:focus-visible{filter:brightness(1.15) drop-shadow(0 0 6px #c8102e77);outline:none}
+.helper-map [data-seat].selected{filter:drop-shadow(0 0 6px #c8102e);stroke:#c8102e!important;stroke-width:14!important;paint-order:stroke fill}
+.helper-price-scroll{border:1px solid #dbe3e9;border-radius:12px;overflow:hidden}
+.helper-price-table{border-collapse:collapse;width:100%;font-size:.87rem}
+.helper-price-table td,.helper-price-table th{padding:.68rem .6rem;border-bottom:1px solid #e2e8ef;text-align:left}
+.helper-price-table th{background:var(--navy);color:#fff}
+.helper-price-table td:last-child,.helper-price-table th:last-child{text-align:right;white-space:nowrap}
+.helper-price-table button{background:transparent;border:0;padding:.25rem 0;text-align:left;color:var(--navy);font-weight:800;font:inherit;cursor:pointer}
+.helper-price-table tr[data-key]{cursor:pointer}
+.helper-price-table tr[data-key]:hover{background:#fff0f2}
+.helper-price-table tr.chosen-row{box-shadow:inset 0 0 0 1px var(--red)}
+.helper-price-table .helper-group td{background:#6b7480;color:white;font-weight:900;text-align:left}
+.helper-price-table .helper-limited{background:#e2e5e9}
+.helper-seat-dialog{padding:1.25rem;border:none;border-radius:16px;width:min(520px,calc(100vw - 24px));max-height:88dvh;overflow:auto;box-shadow:0 22px 70px #0005}
+.helper-seat-dialog::backdrop{background:#102a43b3}
+.helper-close{position:sticky;top:0;float:right;width:38px;height:38px;border:0;border-radius:50%;font-size:1.4rem;background:#eaf0f5;color:var(--navy);cursor:pointer;z-index:2}
+.helper-detail{display:grid;gap:.7rem;clear:both}
+.helper-detail h2{margin:0;color:var(--navy);font-size:1.32rem}
+.helper-detail p{margin:0;font-size:.89rem;line-height:1.6}
+.helper-detail-price{font-size:1.2rem!important;font-weight:900;color:var(--red-dark)}
+.helper-detail-meta{font-size:.8rem;color:#42586b}
+.helper-detail-placeholder{background:#f6f8fa;border:1px dashed #bccbd4;border-radius:10px;padding:2rem 1rem;text-align:center;color:var(--muted)}
+.helper-location{max-width:340px;border:1px solid #dbe3e9;border-radius:10px;overflow:hidden}
+.helper-location svg{display:block;width:100%;height:auto}
+.helper-location [data-seat]{fill:#bfc3ca!important;fill-opacity:1!important;opacity:1!important;pointer-events:none;stroke:#fff!important}
+.helper-location [data-seat].highlight{fill:#f00!important;stroke:#c8102e!important;stroke-width:8!important}
+.helper-confirm{display:block;width:100%;border:none;background:var(--red);color:#fff;border-radius:11px;padding:.85rem;margin-top:1rem;font:inherit;font-weight:900;cursor:pointer}
+.helper-confirm:hover{background:var(--red-dark)}
+@media(max-width:500px){.helper-price-table{font-size:.78rem}.helper-price-table td,.helper-price-table th{padding:.58rem .35rem}.helper-seat-dialog{padding:.9rem}}
 </style>
 </head>
 <body>
-<header class="topbar"><div class="topbar-inner"><a href="./index.html#day-tickets" aria-label="Back to KATTOBASE"><img class="logo" src="images/kattobase_logo.png" alt="KATTOBASE"></a><a class="back" href="./index.html#tickets">← Back to Seat Guide</a></div></header>
+<header class="topbar"><div class="topbar-inner"><a href="./index.html#day-tickets" aria-label="Back to KATTOBASE"><img class="logo" src="images/kattobase_logo.png" alt="KATTOBASE"></a><a class="back" href="./index.html#day-tickets">← KATTOBASE</a></div></header>
 <main>
 <div class="eyebrow">TICKET COUNTER HELPER</div>
 <h1>Show your ticket request in Japanese</h1>
-<p class="intro">Choose your options below, then show the Japanese message to the staff at the ticket counter. This tool does not purchase or reserve tickets.</p>
-<div id="no-seat" class="empty" hidden>Please choose a seat in the <a href="./index.html#tickets">Seat Map / Price Table</a> first.</div>
+<p class="intro">Choose a seat from the map or price list, confirm it in the pop-up, then set your quantity, seat preference and payment method. Show the Japanese message to the staff.</p>
+
 <div id="helper">
 <section class="panel config" aria-labelledby="selected-seat-heading">
 <h2 id="selected-seat-heading">1. Selected Seat</h2>
-<div id="selected-seat" class="chosen"></div>
-<p class="help">To choose a different seat, return to the <a href="./index.html#tickets">Seat Map / Price Table</a>.</p>
+<div id="selected-seat" class="chosen">No seat selected</div>
+<div class="helper-tabs" role="tablist" aria-label="Seat selection view">
+  <button type="button" id="helper-map-tab" role="tab" aria-selected="true" aria-controls="helper-map-panel">Seat Map</button>
+  <button type="button" id="helper-price-tab" role="tab" aria-selected="false" aria-controls="helper-price-panel" tabindex="-1">Price Table</button>
+</div>
+<div id="helper-map-panel" role="tabpanel" aria-labelledby="helper-map-tab">
+  <div id="helper-map" class="helper-map"><p class="help">Loading seat map…</p></div>
+  <p class="help">Tap a colored seating area to see details.</p>
+</div>
+<div id="helper-price-panel" role="tabpanel" aria-labelledby="helper-price-tab" hidden>
+  <div class="helper-price-scroll"><table class="helper-price-table"><thead><tr><th>Seat</th><th>Price</th></tr></thead><tbody id="helper-price-rows"></tbody></table></div>
+  <p class="help">Grey rows are annual or special seating areas. Prices are indicative; availability must be confirmed at the counter.</p>
+</div>
+<dialog class="helper-seat-dialog" id="helper-seat-dialog" aria-labelledby="helper-dialog-heading">
+  <button type="button" id="helper-dialog-close" class="helper-close" aria-label="Close details">×</button>
+  <div id="helper-dialog-content"></div>
+  <button type="button" id="helper-confirm" class="helper-confirm">Select This Seat</button>
+</dialog>
 </section>
 <section class="panel config" aria-labelledby="quantity-heading">
 <h2 id="quantity-heading">2. Number of Tickets</h2>
 <div id="quantities" class="count-row"></div>
-<p class="help">For Infield Unreserved Seats, choose adult and child ticket quantities separately.</p>
+<p class="help" id="quantity-help">For Infield Unreserved Seats, choose adult and child ticket quantities separately.</p>
 </section>
 <section class="panel config" aria-labelledby="preference-heading">
 <h2 id="preference-heading">3. Seat Preference</h2>
@@ -88,79 +144,154 @@ footer{border-top:1px solid var(--line);padding:1.3rem;text-align:center;font-si
 <div class="show-content"><p id="jp-message" class="jp-message" lang="ja" aria-live="polite"></p></div>
 </section>
 <p class="show-note">Please confirm seat availability, prices, and payment acceptance with the staff.</p>
-<div class="actions"><button id="copy" type="button">Copy Japanese Message</button><a href="./index.html#tickets">Change Seat</a></div>
+<div class="actions"><button id="copy" type="button">Copy Japanese Message</button><button type="button" id="change-seat">Change Seat</button></div>
 </div>
 <p class="notice">The availability of same-day tickets is not guaranteed. Special seats, group seats and annual reserved areas may not be offered at the ticket counter. Check the official Hiroshima Toyo Carp ticket information before visiting.</p>
 </main>
 <footer>© KATTOBASE — Unofficial personal guide, not affiliated with Hiroshima Toyo Carp.</footer>
 <script>
 (()=>{'use strict';
-const seats={
-reserved_a:['Infield Reserved Seat A','内野指定席A'],
-sky_seat:['Sky Seat','スカイシート'],
-infield_reserved_2f:['Infield Reserved Seat (2F)','内野指定席（2階）'],
-infield_unreserved:['Infield Unreserved Seat','内野自由席'],
-outfield:['Outfield Reserved Seat','外野指定席'],
-carp_performance:['Carp Performance Seat','カープパフォーマンス席'],
-performance_3b:['3B Performance Seat','3塁側パフォーマンス席'],
-visitor_performance:['Visitor Performance Seat','ビジターパフォーマンス席'],
-reserved_s:['Reserved Seat S','指定席S'],
-outfield_annual_reserved:['Outfield Annual Reserved Seat','外野年間指定席'],
-sunakaburi:['Sunakaburi Seat','砂かぶり席'],
-surprise_terrace:['Surprise Terrace','びっくりテラス'],
-nesoberia:['Nesoberia','寝そべりあ'],
-outfield_surprise_terrace:['Outfield Surprise Terrace','外野びっくりテラス'],
-infield_group:['Infield Group Seat','内野団体席'],
-lodge_3b:['Lodge (3B Side)','ロッジ（三塁側）'],
-lodge_1b:['Lodge (1B Side)','ロッジ（一塁側）'],
-terrace:['Terrace Seat','テラス席']
-};
-const key=new URLSearchParams(location.search).get('seat'),seat=Object.hasOwn(seats,key)?seats[key]:null;
-if(!seat){document.getElementById('helper').hidden=true;document.getElementById('no-seat').hidden=false;return;}
-document.getElementById('selected-seat').textContent=seat[0];
-const unreserved=key==='infield_unreserved',counts={adult:1,child:0,total:1};
-const container=document.getElementById('quantities');
-function createCounter(id,label){
+const seats=[
+{id:'reserved_s',name:'指定席S',area:'内野',floor:1,svg:['reserved_s'],feature:'グラウンドに近い内野の指定席です。'},
+{id:'reserved_a',name:'内野指定席A',area:'内野',floor:1,price:4200,svg:['reserved'],feature:'内野の指定席で、グラウンドを見渡せるエリアです。'},
+{id:'sunakaburi',name:'砂かぶり席',area:'内野',floor:1,svg:['sunakaburi'],feature:'グラウンドに近い特別席です。'},
+{id:'surprise_terrace',name:'びっくりテラス',area:'外野',floor:1,svg:['surprise_terrace'],feature:'グループ向けテラス席です。',note:'席単位ではなくグループ単位の販売条件がある場合があります。'},
+{id:'outfield',name:'外野指定席',area:'外野',floor:1,price:2500,svg:['outfield'],feature:'外野席からフィールドを眺められます。'},
+{id:'outfield_annual_reserved',name:'外野年間指定席',area:'外野',floor:1,svg:['outfield_annual_reserved'],feature:'年間指定席として設けられているエリアです。',note:'一般販売の有無を公式情報で確認してください。'},
+{id:'nesoberia',name:'寝そべりあ',area:'外野',floor:1,svg:['nesoberia'],feature:'寝そべって観戦できる特色ある座席です。'},
+{id:'outfield_surprise_terrace',name:'外野びっくりテラス',area:'外野',floor:1,svg:['outfield_surprise_terrace'],feature:'外野側のグループ向けテラス席です。'},
+{id:'infield_group',name:'内野団体席',area:'内野',floor:1,svg:['infield_group'],feature:'団体向けの観戦エリアです。',note:'個人旅行者が購入できるとは限りません。'},
+{id:'carp_performance',name:'カープパフォーマンス席',area:'外野',floor:2,price:2100,svg:['carp_performance_a','carp_performance_b'],feature:'カープの応援を楽しめる座席です。',note:'応援ルールや販売条件を確認してください。'},
+{id:'performance_3b',name:'3塁側パフォーマンス席',area:'内野',floor:2,price:2100,svg:['performance_3b'],feature:'三塁側のパフォーマンス席です。'},
+{id:'visitor_performance',name:'ビジターパフォーマンス席',area:'外野',floor:2,price:2100,svg:['visitor_performance'],feature:'ビジターチームの応援エリアです。',note:'カープの応援・グッズに制限があります。'},
+{id:'sky_seat',name:'スカイシート',area:'内野',floor:2,price:3300,svg:['sky_seat'],feature:'2階席からグラウンドを見渡せます。'},
+{id:'lodge_3b',name:'ロッジ（三塁側）',area:'内野',floor:2,svg:['lodge_3b'],feature:'三塁側のロッジ席です。'},
+{id:'lodge_1b',name:'ロッジ（一塁側）',area:'内野',floor:2,svg:['lodge_1b'],feature:'一塁側のロッジ席です。'},
+{id:'terrace',name:'テラス席',area:'内野',floor:2,svg:['terrace'],feature:'内野側のテラス席です。'},
+{id:'infield_unreserved',name:'内野自由席',area:'内野',floor:2,price:1900,childPrice:900,svg:['infield_unreserved'],feature:'2階内野の自由席エリアです。',note:'大人・子供の料金区分や年齢条件は公式情報を確認してください。'},
+{id:'infield_reserved_2f',name:'内野指定席（2階）',area:'内野',floor:2,price:2500,svg:['infield_reserved_2f'],feature:'2階内野の指定席エリアです。'}
+];
+
+const enNames={reserved_a:'Infield Reserved Seat A',sky_seat:'Sky Seat',infield_reserved_2f:'Infield Reserved Seat (2F)',infield_unreserved:'Infield Unreserved Seat',outfield:'Outfield Reserved Seat',carp_performance:'Carp Performance Seat',performance_3b:'3B Performance Seat',visitor_performance:'Visitor Performance Seat',reserved_s:'Reserved Seat S',outfield_annual_reserved:'Outfield Annual Reserved Seat',sunakaburi:'Sunakaburi Seat',surprise_terrace:'Surprise Terrace',nesoberia:'Nesoberia',outfield_surprise_terrace:'Outfield Surprise Terrace',infield_group:'Infield Group Seat',lodge_3b:'Lodge (3B Side)',lodge_1b:'Lodge (1B Side)',terrace:'Terrace Seat'};
+const byId=new Map(seats.map(x=>[x.id,x]));
+const bySvg=new Map(seats.flatMap(seat=>seat.svg.map(id=>[id,seat])));
+const money=n=>'¥'+n.toLocaleString('ja-JP');
+const price=seat=>seat.childPrice!=null?'Adult '+money(seat.price)+' / Child '+money(seat.childPrice):seat.price?money(seat.price):'Ask at ticket counter';
+const map=document.getElementById('helper-map'),rows=document.getElementById('helper-price-rows'),dialog=document.getElementById('helper-seat-dialog'),dialogBody=document.getElementById('helper-dialog-content');
+const selectedDisplay=document.getElementById('selected-seat'),quantities=document.getElementById('quantities'),qtyHelp=document.getElementById('quantity-help');
+let selected=null,pending=null,lastTrigger=null,mapSvg=null;const counts={adult:1,child:0,total:1};const counterUpdates=[];
+function counter(key,label){
  const outer=document.createElement('div');outer.className='counter';
- const heading=document.createElement('div');heading.className='counter-label';heading.textContent=label;
- const controls=document.createElement('div');controls.className='counter-tools';
- const minus=document.createElement('button');minus.type='button';minus.textContent='−';minus.setAttribute('aria-label','Decrease '+label);
- const count=document.createElement('span');count.className='count-value';count.setAttribute('aria-live','polite');
- const plus=document.createElement('button');plus.type='button';plus.textContent='+';plus.setAttribute('aria-label','Increase '+label);
- function draw(){count.textContent=counts[id];minus.disabled=counts[id]===0;plus.disabled=counts[id]===20;}
- minus.addEventListener('click',()=>{counts[id]=Math.max(0,counts[id]-1);draw();update()});
- plus.addEventListener('click',()=>{counts[id]=Math.min(20,counts[id]+1);draw();update()});
- controls.append(minus,count,plus);outer.append(heading,controls);container.append(outer);draw();
+ const header=document.createElement('div');header.className='counter-label';header.textContent=label;
+ const tools=document.createElement('div');tools.className='counter-tools';
+ const minus=document.createElement('button'),plus=document.createElement('button'),value=document.createElement('span');
+ minus.type=plus.type='button';minus.textContent='−';plus.textContent='+';value.className='count-value';
+ minus.setAttribute('aria-label','Decrease '+label);plus.setAttribute('aria-label','Increase '+label);
+ const draw=()=>{value.textContent=counts[key];minus.disabled=counts[key]===0;plus.disabled=counts[key]===20};
+ minus.addEventListener('click',()=>{counts[key]=Math.max(0,counts[key]-1);draw();update()});
+ plus.addEventListener('click',()=>{counts[key]=Math.min(20,counts[key]+1);draw();update()});
+ tools.append(minus,value,plus);outer.append(header,tools);quantities.append(outer);draw();
 }
-if(unreserved){createCounter('adult','Adults');createCounter('child','Children')}else{container.style.gridTemplateColumns='minmax(0,1fr)';createCounter('total','Tickets')}
+function rebuildCounters(){
+ quantities.replaceChildren();const split=selected?.id==='infield_unreserved';
+ quantities.style.gridTemplateColumns=split?'1fr 1fr':'minmax(0,1fr)';
+ if(split){counter('adult','Adults');counter('child','Children')}else{counter('total','Tickets')}
+ qtyHelp.textContent=split?'Select adult and child ticket quantities separately.':'Select the number of tickets.';
+}
+function setTab(type){
+ const isMap=type==='map';
+ document.getElementById('helper-map-panel').hidden=!isMap;
+ document.getElementById('helper-price-panel').hidden=isMap;
+ for(const [id,active] of [['helper-map-tab',isMap],['helper-price-tab',!isMap]]){
+  const tab=document.getElementById(id);tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;
+ }
+}
+document.getElementById('helper-map-tab').addEventListener('click',()=>setTab('map'));
+document.getElementById('helper-price-tab').addEventListener('click',()=>setTab('price'));
+function showSelection(){
+ map.querySelectorAll('[data-seat]').forEach(el=>el.classList.toggle('selected',!!selected&&selected.svg.includes(el.dataset.seat)));
+ rows.querySelectorAll('tr[data-key]').forEach(el=>el.classList.toggle('chosen-row',!!selected&&el.dataset.key===selected.id));
+}
+function positionDiagram(seat){
+ const el=document.createElement('div');el.className='helper-location';
+ if(!mapSvg){el.textContent='Loading map…';return el}
+ const clone=mapSvg.cloneNode(true);
+ clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
+ clone.querySelectorAll('[data-seat]').forEach(n=>{n.classList.remove('selected');n.classList.toggle('highlight',seat.svg.includes(n.dataset.seat));n.removeAttribute('tabindex');n.removeAttribute('role')});
+ clone.setAttribute('aria-label','Selected seats in red; other seats in grey');
+ el.append(clone);return el;
+}
+function openSeat(seat,trigger){
+ pending=seat;lastTrigger=trigger;
+ const c=document.createElement('div');c.className='helper-detail';
+ const title=document.createElement('h2');title.id='helper-dialog-heading';title.textContent=enNames[seat.id];
+ const photo=document.createElement('div');photo.className='helper-detail-placeholder';photo.textContent='Seat photo: coming soon';
+ const priceLabel=document.createElement('p');priceLabel.className='helper-detail-price';priceLabel.textContent=price(seat)+' (reference)';
+ const meta=document.createElement('p');meta.className='helper-detail-meta';meta.textContent=(seat.area==='内野'?'Infield':'Outfield')+' / '+seat.floor+'F';
+ const feature=document.createElement('p');feature.textContent=seat.feature;
+ const note=document.createElement('p');note.textContent=seat.note||'Ticket sales and seat use are subject to official conditions.';
+ const locationTitle=document.createElement('strong');locationTitle.textContent='Seat location';
+ const position=positionDiagram(seat);
+ c.append(title,photo,priceLabel,meta,feature,note,locationTitle,position);
+ dialogBody.replaceChildren(c);if(!dialog.open)dialog.showModal();
+}
+document.getElementById('helper-dialog-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+dialog.addEventListener('close',()=>{if(lastTrigger?.isConnected)lastTrigger.focus({preventScroll:true})});
+document.getElementById('helper-confirm').addEventListener('click',()=>{
+ if(!pending)return;
+ selected=pending;selectedDisplay.textContent=enNames[selected.id]+' / '+selected.name;
+ rebuildCounters();showSelection();update();dialog.close();
+ document.getElementById('quantities').scrollIntoView({behavior:'smooth',block:'center'});
+});
+function addCategory(label){
+ const tr=document.createElement('tr');tr.className='helper-group';const td=document.createElement('td');td.colSpan=2;td.textContent=label;tr.append(td);rows.append(tr);
+}
+function addRow(key,limited=false){
+ const [id,variant]=key.split(':'),seat=byId.get(id);if(!seat)return;
+ const tr=document.createElement('tr');tr.dataset.key=seat.id;if(limited)tr.classList.add('helper-limited');
+ const first=document.createElement('td'),btn=document.createElement('button');btn.type='button';
+ btn.textContent=enNames[id]+(variant==='adult'?' (Adult)':variant==='child'?' (Child)':'');
+ btn.addEventListener('click',()=>openSeat(seat,btn));first.append(btn);
+ const second=document.createElement('td');second.textContent=variant==='adult'?money(seat.price):variant==='child'?money(seat.childPrice):seat.price?money(seat.price):'Ask staff';
+ tr.addEventListener('click',e=>{if(e.target.closest('button'))return;openSeat(seat,btn)});
+ tr.append(first,second);rows.append(tr);
+}
+const regular=['reserved_a','sky_seat','infield_reserved_2f','infield_unreserved:adult','infield_unreserved:child','outfield','carp_performance','performance_3b','visitor_performance'];
+const annual=['reserved_s','outfield_annual_reserved'],special=['sunakaburi','surprise_terrace','nesoberia','outfield_surprise_terrace','infield_group','lodge_3b','lodge_1b','terrace'];
+regular.forEach(k=>addRow(k));addCategory('ANNUAL RESERVED SEATS');annual.forEach(k=>addRow(k,true));addCategory('SPECIAL SEATS — LIMITED AVAILABILITY');special.forEach(k=>addRow(k,true));
+fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(xml=>{
+ const doc=new DOMParser().parseFromString(xml,'image/svg+xml');if(doc.querySelector('parsererror'))throw Error('Invalid SVG');
+ const svg=doc.documentElement;if(svg.localName!=='svg')throw Error('Invalid SVG');
+ svg.querySelector('#layer1')?.remove();svg.removeAttribute('width');svg.removeAttribute('height');
+ mapSvg=document.importNode(svg,true);map.replaceChildren(mapSvg);
+ for(const [id,seat] of bySvg){
+  const el=mapSvg.querySelector('#'+id);if(!el)continue;
+  el.dataset.seat=id;el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label','See details for '+enNames[seat.id]);
+  el.addEventListener('click',()=>openSeat(seat,el));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSeat(seat,el)}});
+ }
+ showSelection();
+}).catch(e=>{map.textContent='Seat map could not be loaded. Please try the Price Table.';console.error(e)});
 const preferenceTexts={any:'座席の位置はおまかせします。',front:'できれば前の方の席をお願いします。',back:'できれば後ろの方の席をお願いします。',aisle:'できれば通路側の席をお願いします。'};
 const payments={none:'',cash:'現金で支払います。',card:'カードで支払います。'};
 const message=document.getElementById('jp-message');let messagePlain='';
 function update(){
+ if(!selected){message.textContent='先に座席を選択してください。';messagePlain='';document.getElementById('copy').disabled=true;return;}
  const pref=document.querySelector('input[name="preference"]:checked').value;
  const payment=document.querySelector('input[name="payment"]:checked').value;
- let quantity='';
- if(unreserved){
-   const parts=[];if(counts.adult)parts.push('大人'+counts.adult+'枚');if(counts.child)parts.push('子供'+counts.child+'枚');
-   quantity=parts.join('、');
- }else if(counts.total){quantity=counts.total+'枚';}
- if(!quantity){message.textContent='購入枚数を1枚以上選択してください。';messagePlain='';document.getElementById('copy').disabled=true;return;}
- const pieces=['今日の試合の'+seat[1]+'を'+quantity+'お願いします。',preferenceTexts[pref],payments[payment]].filter(Boolean);
- messagePlain=pieces.join('\n');
- message.replaceChildren();
- pieces.forEach((line,i)=>{
-   if(i){message.append(document.createElement('br'));}
-   const span=document.createElement('span');span.textContent=line;
-   if(i===0)span.className='jp-seat';
-   message.append(span);
- });
+ const split=selected.id==='infield_unreserved';
+ const qty=split?[counts.adult?'大人'+counts.adult+'枚':'',counts.child?'子供'+counts.child+'枚':''].filter(Boolean).join('、'):counts.total?counts.total+'枚':'';
+ if(!qty){message.textContent='購入枚数を1枚以上選択してください。';messagePlain='';document.getElementById('copy').disabled=true;return;}
+ const pieces=['今日の試合の'+selected.name+'を'+qty+'お願いします。',preferenceTexts[pref],payments[payment]].filter(Boolean);
+ messagePlain=pieces.join('\n');message.replaceChildren();
+ pieces.forEach((s,i)=>{if(i)message.append(document.createElement('br'));const el=document.createElement('span');el.textContent=s;message.append(el)});
  document.getElementById('copy').disabled=false;
 }
 document.querySelectorAll('input[name="preference"],input[name="payment"]').forEach(el=>el.addEventListener('change',update));
-document.getElementById('copy').addEventListener('click',async()=>{
- try{await navigator.clipboard.writeText(messagePlain);const btn=document.getElementById('copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy Japanese Message'},1600)}catch(e){console.warn('Clipboard unavailable',e);alert('Please show the Japanese message directly to the staff.');}
-});
-update();
+document.getElementById('change-seat').addEventListener('click',()=>{document.getElementById('selected-seat').scrollIntoView({behavior:'smooth',block:'start'});});
+document.getElementById('copy').addEventListener('click',async()=>{if(!messagePlain)return;try{await navigator.clipboard.writeText(messagePlain);const btn=document.getElementById('copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy Japanese Message'},1500)}catch(e){alert('Please show the Japanese message directly to the staff.')}});
+rebuildCounters();update();
 })();
 </script>
 </body></html>
