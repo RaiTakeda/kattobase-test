@@ -416,6 +416,26 @@ body{background:#fff}
 .takeit-item>img{display:block;width:100%;height:10.5cqw;object-fit:contain;object-position:center}
 .takeit-name{display:flex;align-items:center;min-height:10.5cqw;font-size:3.65cqw;line-height:1.15;font-weight:850;white-space:nowrap}
 @media(max-width:500px){.takeit-chart{gap:2.4%}.takeit-panel{border-width:1px}.takeit-name{font-size:3.5cqw}.takeit-item{column-gap:2%}}
+
+/* Step 4 cheering-goods infographic: regular grid instead of source SVG positions */
+.cheering-zones-chart{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.45rem 0 1.1rem}
+.cheering-zone{border:2px solid #cad2dc;border-radius:14px;background:#fff;min-width:0;overflow:hidden}
+.cheering-zone h3{margin:0;padding:.65rem .45rem;text-align:center;background:#ebeff4;color:#162f46;font-size:clamp(.68rem,1.5vw,.94rem);line-height:1.35;font-weight:900}
+.cheering-zone-visitor{border-color:#4978aa}.cheering-zone-visitor h3{background:#4978aa;color:#fff}
+.cheering-zone-carp{border-color:#c8102e}.cheering-zone-carp h3{background:#c8102e;color:#fff}
+.cheering-zone-detail{display:grid;grid-template-rows:repeat(2,1fr);height:100%}
+.cheering-zone-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:.55rem;padding:1rem .6rem;min-height:110px}
+.cheering-zone-row+.cheering-zone-row{border-top:1px solid #dce2e8}
+.cheering-zone-row strong{font-size:clamp(.7rem,1.8vw,.95rem);line-height:1.3;color:var(--navy);overflow-wrap:anywhere}
+.cheering-icon-pair{display:flex;align-items:center;justify-content:center;gap:.6rem;min-width:0}
+.cheering-icon-pair img{display:block;width:min(48%,86px);height:74px;object-fit:contain}
+.cheering-icon-pair img:only-child{width:min(80%,105px)}
+.cheering-zone-other{grid-column:1/-1;border-color:#9aa5af}
+.cheering-zone-other h3{background:#667786;color:#fff}
+.cheering-other-icons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;justify-items:center;gap:.75rem;padding:1rem}
+.cheering-other-icons img{width:100%;max-width:96px;height:76px;object-fit:contain;display:block}
+.cheering-zone-other p{font-size:.78rem!important;color:var(--muted);margin:0!important;padding:0 .8rem .85rem;line-height:1.55}
+@media(max-width:540px){.cheering-zones-chart{gap:.5rem}.cheering-zone{border-radius:9px}.cheering-zone h3{padding:.5rem .2rem;font-size:.6rem}.cheering-zone-row{grid-template-columns:1fr;justify-items:center;text-align:center;gap:.2rem;min-height:94px;padding:.55rem .2rem}.cheering-zone-row strong{font-size:.7rem}.cheering-icon-pair{gap:.25rem;width:100%}.cheering-icon-pair img{height:50px;max-width:60px}.cheering-other-icons{gap:.3rem;padding:.65rem}.cheering-other-icons img{height:49px}}
 </style>
 </head>
 <body>
@@ -592,7 +612,32 @@ body{background:#fff}
       <div class="takeit-item"><span class="takeit-mark" aria-hidden="true"><img src="images/マーク_チェック.svg" alt=""></span><img src="images/item/パック.svg" alt="" loading="lazy"><span class="takeit-name">Carton</span></div>
     </div>
   </div>
-</div><p>ビジターパフォーマンス席は、カープの対戦相手チームを応援する人のための席です。カープパフォーマンス席は、カープを応援する人のための席です。</p><p>再入場は可能ですが、外へ出る場合は再入場用の出口で手続きが必要です。</p><div class="tags"><span class="tag red">ビン・カン・PETボトル禁止</span><span class="tag">手荷物検査</span><span class="tag">再入場可</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>雨の日は、座席で傘を差すよりレインコートがおすすめです。大きな荷物は、広島駅やホテルに預けてから向かうと楽です。</p></aside></div></div></section>
+</div><aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>お土産で日本酒（瓶）を購入してうっかり球場に持ってきてしまう人もいます。ホテルやコインロッカーに預けてください。</p></aside><p>ビジターパフォーマンス席は、カープの対戦相手チームを応援する人のための席です。カープパフォーマンス席は、カープを応援する人のための席です。</p><div class="cheering-zones-chart" role="group" aria-label="応援エリアごとのグッズと応援の区分。ビジターチーム用、カープ用、その他エリアの例">
+  <div class="cheering-zone cheering-zone-visitor">
+    <h3>VISITOR PERFORMANCE SEAT</h3>
+    <div class="cheering-zone-detail">
+      <div class="cheering-zone-row"><strong>Visitor Goods</strong><div class="cheering-icon-pair"><img src="images/item/帽子_巨人.svg" alt="巨人の帽子" loading="lazy"><img src="images/item/帽子_阪神.svg" alt="阪神の帽子" loading="lazy"></div></div>
+      <div class="cheering-zone-row"><strong>Cheer Visitor</strong><div class="cheering-icon-pair"><img src="images/item/メガホン_ビジター.svg" alt="ビジターチームのメガホン" loading="lazy"></div></div>
+    </div>
+  </div>
+  <div class="cheering-zone cheering-zone-carp">
+    <h3>CARP PERFORMANCE SEAT</h3>
+    <div class="cheering-zone-detail">
+      <div class="cheering-zone-row"><strong>Carp Goods</strong><div class="cheering-icon-pair"><img src="images/item/帽子_カープ.svg" alt="カープの帽子" loading="lazy"></div></div>
+      <div class="cheering-zone-row"><strong>Cheer Carp</strong><div class="cheering-icon-pair"><img src="images/item/メガホン_カープ.svg" alt="カープのメガホン" loading="lazy"></div></div>
+    </div>
+  </div>
+  <div class="cheering-zone cheering-zone-other">
+    <h3>OTHER SEATING AREAS</h3>
+    <div class="cheering-other-icons">
+      <img src="images/item/帽子_巨人.svg" alt="巨人の帽子" loading="lazy">
+      <img src="images/item/帽子_カープ.svg" alt="カープの帽子" loading="lazy">
+      <img src="images/item/メガホン_ビジター.svg" alt="ビジターチームのメガホン" loading="lazy">
+      <img src="images/item/メガホン_カープ.svg" alt="カープのメガホン" loading="lazy">
+    </div>
+    <p>座席エリアによって応援・グッズのルールが異なります。観戦前に公式情報をご確認ください。</p>
+  </div>
+</div><aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>それぞれのチームに似たアイテムを着用して、禁止エリアに向かうことはおすすめしません。スタッフに止められたり、他の観客とのトラブルになる可能性があります。</p></aside><p>再入場は可能ですが、外へ出る場合は再入場用の出口で手続きが必要です。</p><div class="tags"><span class="tag red">ビン・カン・PETボトル禁止</span><span class="tag">手荷物検査</span><span class="tag">再入場可</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>雨の日は、座席で傘を差すよりレインコートがおすすめです。大きな荷物は、広島駅やホテルに預けてから向かうと楽です。</p></aside></div></div></section>
 <section class="guide" id="weather"><div class="num">5</div><div><div class="title-row"><h2>天気をチェック</h2><span class="kicker">OUTDOOR STADIUM</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムは屋外球場です。試合前には、天気予報と公式サイトのお知らせを確認しましょう。</p><p>夏は日差しと暑さが強く、春・秋のナイトゲームは肌寒くなることがあります。雨が予想される場合は、レインコートを用意すると安心です。</p><div class="tags"><span class="tag gold">雨：レインコート</span><span class="tag red">夏：暑さ対策</span><span class="tag">夜：羽織るもの</span></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>屋根の少ない場所もあるため、雨具や日よけは球場に着く前に用意しておくのがおすすめです。雨天中止の発表は直前になることもあります。</p></aside></div></div></section>
 <section class="guide" id="gate"><div class="num">6</div><div><div class="title-row"><h2>入場口</h2><span class="kicker">ENTER THE BALLPARK</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div><div class="side"><div class="mini-title">GATE IMAGE</div><div class="gate"><div class="gate-ring"></div><span class="glabel g1">正面ゲート</span><span class="glabel g2">JR側ゲート</span><span class="glabel g3">メインゲート</span></div><p class="small">位置関係のイメージです。実際の導線は現地案内も確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
 <section class="guide" id="goods"><div class="num">7</div><div><div class="title-row"><h2>グッズ</h2><span class="kicker">WEAR THE RED</span></div><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>カープグッズは、マツダ スタジアム内のショップや、広島駅周辺の販売店で購入できます。ユニフォーム、タオル、メガホン、風船など、観戦を楽しむためのグッズがそろっています。</p><p>試合前や試合終了後はショップが混みやすいため、ゆっくり選びたい場合は試合中に立ち寄るのがおすすめです。</p><p>ビジターパフォーマンス席ではカープグッズを使えず、カープパフォーマンス席では対戦相手チームのグッズを使えません。</p></div><div class="side"><div class="mini-title">EASY STARTERS</div><div class="goods"><div class="good"><span>📣</span>メガホン</div><div class="good"><span>🧣</span>タオル</div><div class="good"><span>👕</span>ユニフォーム</div><div class="good"><span>🎈</span>風船</div></div><p class="small">ユニフォームは日本サイズなので、試着またはサイズ表の確認がおすすめです。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人には、応援にすぐ参加しやすいメガホンがおすすめです。荷物を増やしたくない場合は、タオルが便利です。ユニフォームやタオルを身につけると、写真でもカープ観戦らしい雰囲気を楽しめます。</p></aside></div></section>
