@@ -614,7 +614,7 @@ body{background:#fff}
   <div class="num">4</div>
   <div class="guide-body">
     <div class="title-row"><h2>当日券の買い方</h2></div>
-    <p>窓口で希望の席種や購入枚数を伝えるための日本語表示ツールを用意しました。<a href="#tickets">ステップ2の座席図・価格表</a>で席種を選び、詳細画面の「この席種を選択」を押してください。</p><p><a class="ticket-helper-intro-link" href="#tickets">座席図・価格表から席種を選ぶ →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
+    <p>窓口で希望の席種・枚数・座席位置・支払い方法を日本語で伝えるための専用ページを用意しました。翻訳ページ内の座席図または価格表から席を選び、詳細画面の「この座席を選択」で確定してください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
   </div>
 </section>
 <section class="guide" id="rules"><div class="num">5</div><div><div class="title-row"><h2>スタジアムルール</h2></div><div class="cols"><div class="fact"><p>マツダ スタジアムでは、ビン・カン・ペットボトル類や危険物は持ち込めません。入場時には手荷物検査があります。</p><div class="takeit-chart" role="group" aria-label="持ち込み品の例：NG ビン・缶・ペットボトル、OK 食べ物・カップドリンク・紙パック">
@@ -761,8 +761,7 @@ function makeDetails(seat){
  const locationTitle=document.createElement('strong');locationTitle.textContent='座席位置';
  const loc=makeLocation(seat);
  const official=document.createElement('a');official.href=officialUrl;official.target='_blank';official.rel='noopener noreferrer';official.textContent='カープ公式チケット・販売案内を見る';
- const helper=document.createElement('a');helper.className='seat-helper-pick';helper.href='ticket-helper.html?seat='+encodeURIComponent(seat.id);helper.textContent='この席種を選択';helper.setAttribute('aria-label',seat.name+'を選んで窓口用の日本語を表示');
- wrap.append(heading,photo,price,meta,ft,note,locationTitle,loc,official,helper);
+ wrap.append(heading,photo,price,meta,ft,note,locationTitle,loc,official);
  return wrap;
 }
 function selectSeat(seat,trigger){
