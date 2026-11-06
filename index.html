@@ -494,6 +494,53 @@ body{background:#fff}
 .ticket-window-label-klook{left:37.78%;top:23.77%;width:24.44%;height:7.08%}
 .ticket-window-label-advance{left:74.37%;top:23.77%;width:24.44%;height:7.08%}
 .ticket-window-label-gate{left:62.22%;top:46.22%;width:11.45%;height:7.12%;font-size:clamp(6px,2.1cqw,22px)}
+
+/* Step 4: native HTML recreation of the ticket purchase procedure SVG */
+.ticket-steps-title{margin:1.35rem 0 1rem;color:var(--navy);font-size:1.06rem;font-weight:900}
+.ticket-purchase-steps{display:grid;gap:0;margin:.5rem 0 1.55rem}
+.ticket-purchase-step{display:grid;grid-template-columns:84px minmax(0,1fr);gap:1rem;align-items:stretch;padding:0 0 1.15rem}
+.ticket-purchase-step:not(:last-child) .ticket-step-body{border-bottom:2px solid #f00017;padding-bottom:1.2rem}
+.ticket-step-number{align-self:start;min-height:89px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f00;color:#fff;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);padding:.45rem .25rem 1rem;font-weight:900;line-height:1.12}
+.ticket-step-number span{font-size:1rem}.ticket-step-number strong{font-size:1.65rem}
+.ticket-purchase-step:last-child .ticket-step-number{clip-path:none;min-height:70px;padding:.4rem}
+.ticket-step-body{min-width:0;padding:.3rem 0 0}
+.ticket-step-body h4{font-size:1rem;line-height:1.35;color:var(--navy);margin:0 0 .45rem;font-weight:900}
+.ticket-step-body>p{font-size:.9rem!important;line-height:1.65;margin:.3rem 0!important}
+.ticket-step-note{color:var(--muted)}
+.ticket-step-requests{display:grid;gap:.65rem;margin:1rem 0 .25rem}
+.ticket-step-request{display:grid;grid-template-columns:minmax(125px,32%) minmax(0,1fr);gap:.8rem;align-items:center}
+.ticket-step-request span{display:flex;align-items:center;justify-content:center;min-height:47px;text-align:center;color:#fff;background:#f00;font-size:.9rem;line-height:1.2;font-weight:900;border-radius:11px;padding:.5rem .65rem}
+.ticket-step-request:last-child span{background:#f1b789;color:#111}
+.ticket-step-request p{margin:0!important;font-size:.85rem!important;line-height:1.55}
+.ticket-payment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;align-items:stretch;margin:1.2rem 0 .25rem}
+.ticket-payment-option{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;border:2px solid #f00017;border-radius:9px;padding:1.4rem .55rem .8rem}
+.ticket-payment-option h5{position:absolute;top:0;left:8%;right:8%;transform:translateY(-50%);background:#f00;color:#fff;border-radius:8px;text-align:center;font-size:clamp(.72rem,1.7vw,1rem);line-height:1.3;font-weight:900;margin:0;padding:.35rem .2rem}
+.ticket-payment-option p{font-size:clamp(.64rem,1.55vw,.85rem)!important;line-height:1.45;text-align:center;overflow-wrap:anywhere;margin:.4rem 0 0!important}
+.ticket-payment-cash-icon{width:min(72%,130px);height:98px;object-fit:contain;display:block}
+.ticket-payment-logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;justify-items:center;gap:.45rem;width:100%;min-width:0}
+.ticket-payment-logos img{display:block;max-width:100%;width:100%;height:37px;object-fit:contain}
+.ticket-payment-other{border-color:#002060}
+.ticket-payment-other h5{background:#002060}
+.ticket-payment-other p{text-align:left;align-self:stretch;font-size:clamp(.64rem,1.65vw,.88rem)!important}
+@media(max-width:560px){
+.ticket-purchase-step{grid-template-columns:52px minmax(0,1fr);gap:.55rem;padding-bottom:.85rem}
+.ticket-step-number{min-height:66px;padding:.3rem .12rem .8rem}
+.ticket-step-number span{font-size:.7rem}.ticket-step-number strong{font-size:1.3rem}
+.ticket-purchase-step:last-child .ticket-step-number{min-height:52px}
+.ticket-step-body h4{font-size:.88rem}
+.ticket-step-body>p{font-size:.82rem!important}
+.ticket-step-request{grid-template-columns:38% minmax(0,1fr);gap:.45rem}
+.ticket-step-request span{min-height:43px;font-size:.72rem;padding:.35rem .2rem}
+.ticket-step-request p{font-size:.74rem!important}
+.ticket-payment-grid{gap:.28rem;margin:1.35rem 0 .2rem}
+.ticket-payment-option{border-width:1px;border-radius:6px;padding:1.15rem .22rem .45rem;gap:.35rem}
+.ticket-payment-option h5{font-size:clamp(.57rem,2.4vw,.76rem);border-radius:6px}
+.ticket-payment-cash-icon{height:58px}
+.ticket-payment-logos{gap:.18rem}
+.ticket-payment-logos img{height:26px}
+.ticket-payment-option p{font-size:clamp(.56rem,2vw,.73rem)!important}
+.ticket-payment-other p{font-size:clamp(.57rem,2vw,.73rem)!important}
+}
 </style>
 </head>
 <body>
@@ -701,6 +748,65 @@ body{background:#fff}
         <span class="ticket-window-label ticket-window-label-gate">Gate</span>
       </div>
     </figure>
+    <h3 class="ticket-steps-title">当日券の購入手順</h3>
+    <div class="ticket-purchase-steps" aria-label="当日券購入の4ステップ">
+      <section class="ticket-purchase-step">
+        <div class="ticket-step-number"><span>STEP</span><strong>1</strong></div>
+        <div class="ticket-step-body">
+          <h4>空いている窓口へ</h4>
+          <p>空いている窓口に行ってください。</p>
+          <p class="ticket-step-note">どの窓口でも販売されているチケットの種類は同じです。</p>
+        </div>
+      </section>
+      <section class="ticket-purchase-step">
+        <div class="ticket-step-number"><span>STEP</span><strong>2</strong></div>
+        <div class="ticket-step-body">
+          <h4>希望するチケットを伝える</h4>
+          <p>購入希望の席種、枚数を伝えてください。</p>
+          <div class="ticket-step-requests">
+            <div class="ticket-step-request"><span>Seat</span><p>席の種類</p></div>
+            <div class="ticket-step-request"><span>Number of Tickets</span><p>大人と子供で料金が異なる席を購入する場合は、それぞれの人数を伝えてください。</p></div>
+            <div class="ticket-step-request"><span>Seat Preference</span><p>通路側、前の方、後ろの方など、座席に細かな希望があれば伝えてください。</p></div>
+          </div>
+        </div>
+      </section>
+      <section class="ticket-purchase-step">
+        <div class="ticket-step-number"><span>STEP</span><strong>3</strong></div>
+        <div class="ticket-step-body">
+          <h4>支払い方法を選ぶ</h4>
+          <p>支払いは現金とカード、またはその他いくつかの支払い方法が使用できます。</p>
+          <div class="ticket-payment-grid">
+            <div class="ticket-payment-option ticket-payment-cash">
+              <h5>Cash</h5>
+              <img class="ticket-payment-cash-icon" src="images/現金.svg" alt="現金" loading="lazy">
+              <p>Japanese Yen</p>
+            </div>
+            <div class="ticket-payment-option ticket-payment-credit">
+              <h5>Credit Card</h5>
+              <div class="ticket-payment-logos">
+                <img src="images/cardlogo/カードVISA.svg" alt="Visa" loading="lazy">
+                <img src="images/cardlogo/カードマスターカード.svg" alt="Mastercard" loading="lazy">
+                <img src="images/cardlogo/カードJCB.png" alt="JCB" loading="lazy">
+                <img src="images/cardlogo/カードAMEX.png" alt="American Express" loading="lazy">
+                <img src="images/cardlogo/カードUnionPay.png" alt="UnionPay" loading="lazy">
+              </div>
+              <p>Visa / Mastercard / JCB / Amex / UnionPay</p>
+            </div>
+            <div class="ticket-payment-option ticket-payment-other">
+              <h5>Other</h5>
+              <p>Discover / Diners Club / Transit IC cards / QUICPay / iD / WAON / nanaco / Rakuten Edy / J-Debit</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ticket-purchase-step">
+        <div class="ticket-step-number"><span>STEP</span><strong>4</strong></div>
+        <div class="ticket-step-body">
+          <h4>チケットを受け取る</h4>
+          <p>購入したチケットを窓口で受け取ってください。</p>
+        </div>
+      </section>
+    </div>
     <p>窓口で希望の席種・枚数・座席位置・支払い方法を日本語で伝えるための専用ページを用意しました。翻訳ページ内の座席図または価格表から席を選び、詳細画面の「この座席を選択」で確定してください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
   </div>
 </section>
