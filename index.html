@@ -541,6 +541,12 @@ body{background:#fff}
 .ticket-payment-option p{font-size:clamp(.56rem,2vw,.73rem)!important}
 .ticket-payment-other p{font-size:clamp(.57rem,2vw,.73rem)!important}
 }
+
+/* Step 4: Editor's Tips below ticket-office map and inside purchasing step 2 */
+#day-tickets .ticket-window-figure + .tip{margin:0 0 1.6rem}
+#day-tickets .ticket-step-body > .tip{margin:1.3rem 0 .45rem}
+#day-tickets .ticket-step-body > .tip p + p{margin-top:.65rem}
+#day-tickets .ticket-step-body > .tip .ticket-helper-intro-link{color:#fff}
 </style>
 </head>
 <body>
@@ -704,6 +710,7 @@ body{background:#fff}
   <div class="num">4</div>
   <div class="guide-body">
     <div class="title-row"><h2>当日券の買い方</h2></div>
+    <p>当日券売場とKlook受取カウンターは、その日の試合がデイゲームの場合11:00から、ナイトゲームの場合は15:00にオープンします。</p>
     <h3 class="ticket-hours-title">当日券売場の営業時間</h3>
     <div class="ticket-hours-chart" role="group" aria-label="当日券窓口の営業時間。デーゲームは11時から試合終了30分後まで、ナイトゲームは15時から試合終了30分後まで。">
       <div class="ticket-hours-row">
@@ -733,8 +740,8 @@ body{background:#fff}
         </div>
       </div>
     </div>
+    <p>横断歩道を渡った先に当日券売場、Klook受取カウンターがあります。</p>
     <h3 class="ticket-window-map-title">当日券売場の場所</h3>
-    <p class="ticket-window-map-intro">当日券売場（Same-Day Ticket Counter）の位置を示した案内図です。Klookの受取窓口や前売券窓口とは異なります。</p>
     <figure class="ticket-window-figure">
       <div class="ticket-window-map" role="img" aria-label="マツダスタジアムのチケット売場周辺。左上寄りに当日券売場とKlook窓口、右上に前売券窓口、中央右にゲート。左下から当日券売場へ向かう矢印を表示。">
         <img class="ticket-window-base" src="images/地図チケット売場.svg" alt="" loading="lazy" aria-hidden="true">
@@ -748,6 +755,7 @@ body{background:#fff}
         <span class="ticket-window-label ticket-window-label-gate">Gate</span>
       </div>
     </figure>
+    <aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>球場正面から見て左に当日券売場、右に前売券売場があります。迷ったら、一度球場の正面に行ってから左側に歩いて行ってください。</p></aside>
     <h3 class="ticket-steps-title">当日券の購入手順</h3>
     <div class="ticket-purchase-steps" aria-label="当日券購入の4ステップ">
       <section class="ticket-purchase-step">
@@ -768,6 +776,7 @@ body{background:#fff}
             <div class="ticket-step-request"><span>Number of Tickets</span><p>大人と子供で料金が異なる席を購入する場合は、それぞれの人数を伝えてください。</p></div>
             <div class="ticket-step-request"><span>Seat Preference</span><p>通路側、前の方、後ろの方など、座席に細かな希望があれば伝えてください。</p></div>
           </div>
+          <aside class="tip inline-tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>窓口でのチケット購入をアシストする<a href="ticket-helper.html">翻訳ページ</a>を作りました。座席、枚数、支払い方法を選択すると日本語に翻訳された文章が表示されるので、それをスタッフに見せてください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p></aside>
         </div>
       </section>
       <section class="ticket-purchase-step">
@@ -807,7 +816,7 @@ body{background:#fff}
         </div>
       </section>
     </div>
-    <p>窓口で希望の席種・枚数・座席位置・支払い方法を日本語で伝えるための専用ページを用意しました。翻訳ページ内の座席図または価格表から席を選び、詳細画面の「この座席を選択」で確定してください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
+<p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
   </div>
 </section>
 <section class="guide" id="rules"><div class="num">5</div><div><div class="title-row"><h2>スタジアムルール</h2></div><div class="cols"><div class="fact"><p>マツダ スタジアムでは、ビン・カン・ペットボトル類や危険物は持ち込めません。入場時には手荷物検査があります。</p><div class="takeit-chart" role="group" aria-label="持ち込み品の例：NG ビン・缶・ペットボトル、OK 食べ物・カップドリンク・紙パック">
