@@ -618,6 +618,22 @@ body{background:#fff}
 .gate-time-badge{font-size:clamp(.54rem,2vw,.7rem);padding:.3rem .32rem;border-radius:5px}
 .gate-time-label{font-size:clamp(.5rem,1.85vw,.67rem)}
 }
+
+/* Step 6: HTML overlays for annotated entrance gate map; original unannotated SVG is the background */
+.entrance-map-figure{width:100%;margin:1rem 0 1.35rem}
+.entrance-map-layout{position:relative;width:100%;aspect-ratio:4400/2475;container-type:inline-size;overflow:hidden;background:#e6e6e6;border:1px solid var(--line);border-radius:12px}
+.entrance-map-base{display:block;width:100%;height:100%;object-fit:fill}
+.entrance-map-connectors{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.entrance-map-marker{position:absolute;z-index:1;width:5.91%;aspect-ratio:1;border-radius:50%;background:rgba(0,32,96,.5);transform:translate(-50%,-50%);pointer-events:none}
+.entrance-map-marker-main{left:22.15%;top:38.51%}
+.entrance-map-marker-front{left:54.84%;top:77.45%}
+.entrance-map-callout{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #002060;background:#fff;color:#111;border-radius:1.2cqw;text-align:center;line-height:1.15;padding:1.3cqw .5cqw .4cqw}
+.entrance-map-callout strong{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:45%;min-height:6.75cqw;border-radius:999px;background:#002060;color:#fff;font-size:2.1cqw;font-weight:900;white-space:nowrap}
+.entrance-map-callout span{font-size:1.92cqw;font-weight:800;white-space:nowrap;letter-spacing:-.045cqw}
+.entrance-map-callout-main{left:4.56%;top:65.23%;width:26.20%;height:11.80%}
+.entrance-map-callout-front{left:68.49%;top:74.44%;width:23.20%;height:11.80%}
+.entrance-map-caption{font-size:.81rem;color:var(--muted);line-height:1.55;margin-top:.55rem}
+@media(max-width:560px){.entrance-map-layout{border-radius:8px}.entrance-map-callout{border-width:1px}.entrance-map-callout span{font-size:1.95cqw}.entrance-map-caption{font-size:.72rem}}
 </style>
 </head>
 <body>
@@ -948,7 +964,26 @@ body{background:#fff}
     </div>
   </div>
 </div>
-<p class="gate-time-footnote">着席可能時間は、試合開始の2時間前です。開門時刻とは異なる場合があります。</p><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div><div class="side"><div class="mini-title">GATE IMAGE</div><div class="gate"><div class="gate-ring"></div><span class="glabel g1">正面ゲート</span><span class="glabel g2">JR側ゲート</span><span class="glabel g3">メインゲート</span></div><p class="small">位置関係のイメージです。実際の導線は現地案内も確認してください。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
+<p class="gate-time-footnote">着席可能時間は、試合開始の2時間前です。開門時刻とは異なる場合があります。</p><figure class="entrance-map-figure" aria-label="マツダスタジアムの入場口の位置。Main Gateは坂を上った先、Front Gateはチケット売場付近。">
+  <div class="entrance-map-layout">
+    <img class="entrance-map-base" src="images/地図入場口.svg" alt="マツダスタジアムと周辺道路の地図" loading="lazy">
+    <svg class="entrance-map-connectors" viewBox="0 0 4400 2475" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <line x1="975" y1="1083" x2="778" y2="1526" stroke="#002060" stroke-width="20" />
+      <line x1="2543" y1="1917" x2="3013" y2="1989" stroke="#002060" stroke-width="20" />
+    </svg>
+    <span class="entrance-map-marker entrance-map-marker-main" aria-hidden="true"></span>
+    <span class="entrance-map-marker entrance-map-marker-front" aria-hidden="true"></span>
+    <div class="entrance-map-callout entrance-map-callout-main">
+      <strong>Main Gate</strong>
+      <span>Beyond the top of the slope</span>
+    </div>
+    <div class="entrance-map-callout entrance-map-callout-front">
+      <strong>Front Gate</strong>
+      <span>Near the ticket counter</span>
+    </div>
+  </div>
+  <figcaption class="entrance-map-caption">Main Gate：坂を上がった先 ／ Front Gate：チケット売場付近。実際の動線は現地の案内も確認してください。</figcaption>
+</figure><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
 <section class="guide" id="read-ticket">
   <div class="num">7</div>
   <div class="guide-body">
