@@ -481,6 +481,19 @@ body{background:#fff}
 .ticket-hours-time span{font-size:.68rem}
 .ticket-hours-close{max-width:63%}
 }
+
+/* Step 4: map reconstructed as HTML labels and a scalable vector route over the unannotated SVG */
+.ticket-window-map-title{font-size:1rem;color:var(--navy);font-weight:900;margin:1.25rem 0 .4rem}
+.ticket-window-map-intro{font-size:.87rem!important;color:var(--ink);line-height:1.65;margin:.25rem 0 .6rem!important}
+.ticket-window-figure{margin:.85rem 0 1.4rem;width:100%}
+.ticket-window-map{position:relative;width:100%;aspect-ratio:1295/720;container-type:inline-size;overflow:hidden;background:#fff}
+.ticket-window-base{width:100%;height:100%;object-fit:fill;display:block}
+.ticket-window-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ticket-window-label{position:absolute;display:flex;justify-content:center;align-items:center;z-index:1;background:#002060;color:#fff;border-radius:5cqw;font-weight:900;white-space:nowrap;line-height:1.12;font-size:clamp(6px,1.7cqw,18px);letter-spacing:-.035em;text-align:center;padding:0 .25cqw}
+.ticket-window-label-day{left:37.78%;top:15.61%;width:24.44%;height:7.08%}
+.ticket-window-label-klook{left:37.78%;top:23.77%;width:24.44%;height:7.08%}
+.ticket-window-label-advance{left:74.37%;top:23.77%;width:24.44%;height:7.08%}
+.ticket-window-label-gate{left:62.22%;top:46.22%;width:11.45%;height:7.12%;font-size:clamp(6px,2.1cqw,22px)}
 </style>
 </head>
 <body>
@@ -673,6 +686,21 @@ body{background:#fff}
         </div>
       </div>
     </div>
+    <h3 class="ticket-window-map-title">当日券売場の場所</h3>
+    <p class="ticket-window-map-intro">当日券売場（Same-Day Ticket Counter）の位置を示した案内図です。Klookの受取窓口や前売券窓口とは異なります。</p>
+    <figure class="ticket-window-figure">
+      <div class="ticket-window-map" role="img" aria-label="マツダスタジアムのチケット売場周辺。左上寄りに当日券売場とKlook窓口、右上に前売券窓口、中央右にゲート。左下から当日券売場へ向かう矢印を表示。">
+        <img class="ticket-window-base" src="images/地図チケット売場.svg" alt="" loading="lazy" aria-hidden="true">
+        <svg class="ticket-window-route" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4452 2486" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <polyline points="717,2475 1219,2024 1086,1891 1809,1165" fill="none" stroke="#002060" stroke-width="28" stroke-linecap="round" stroke-linejoin="miter"/>
+          <path d="M1739 1093 L2077 904 L1880 1238 Z" fill="#002060"/>
+        </svg>
+        <span class="ticket-window-label ticket-window-label-day">Same-Day Ticket Counter</span>
+        <span class="ticket-window-label ticket-window-label-klook">Klook Ticket Counter</span>
+        <span class="ticket-window-label ticket-window-label-advance">Advance Ticket Counter</span>
+        <span class="ticket-window-label ticket-window-label-gate">Gate</span>
+      </div>
+    </figure>
     <p>窓口で希望の席種・枚数・座席位置・支払い方法を日本語で伝えるための専用ページを用意しました。翻訳ページ内の座席図または価格表から席を選び、詳細画面の「この座席を選択」で確定してください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
   </div>
 </section>
