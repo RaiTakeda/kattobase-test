@@ -451,6 +451,36 @@ body{background:#fff}
 .seat-details-content a.seat-helper-pick:focus-visible,.ticket-helper-intro-link:focus-visible{outline:3px solid #246cb2;outline-offset:3px}
 .ticket-helper-intro-link{display:inline-block;background:var(--navy);color:#fff;padding:.65rem .9rem;border-radius:10px;text-decoration:none;font-size:.88rem;font-weight:850}
 .ticket-helper-intro-link:hover{background:#244765}
+
+/* Step 4: day-of-game ticket counter business hours; responsive HTML reconstruction */
+.ticket-hours-title{margin:1.2rem 0 .55rem;color:var(--navy);font-size:1rem;font-weight:900}
+.ticket-hours-chart{display:grid;gap:1.15rem;width:100%;margin:.7rem 0 1.55rem}
+.ticket-hours-row{display:grid;grid-template-columns:minmax(112px,23%) minmax(0,1fr);align-items:center;gap:1rem;padding:.6rem .5rem .95rem;border-bottom:1px solid #e2e8ee}
+.ticket-hours-row:last-child{border-bottom:0}
+.ticket-hours-type{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;min-width:0;text-align:center}
+.ticket-hours-type img{display:block;width:clamp(42px,7vw,67px);height:66px;object-fit:contain}
+.ticket-hours-type strong{font-size:clamp(.76rem,1.6vw,1rem);line-height:1.2;font-weight:900;white-space:nowrap}
+.ticket-hours-timeline{min-width:0;padding:.3rem 0}
+.ticket-hours-bar{height:43px;position:relative;background:repeating-linear-gradient(to right,transparent 0,transparent calc(10% - 1px),#e0e5e9 calc(10% - 1px),#e0e5e9 10%);border-bottom:2px solid #19252e}
+.ticket-hours-bar:after{content:"";position:absolute;bottom:-9px;left:0;right:0;height:8px;background:repeating-linear-gradient(to right,#19252e 0,#19252e 1px,transparent 1px,transparent 10%);opacity:.7}
+.ticket-hours-active{position:absolute;left:18%;right:10%;top:5px;bottom:4px;background:linear-gradient(90deg,#ff0000 0%,#ff0000 79%,rgba(255,0,0,.1) 100%)}
+.ticket-hours-bar-night .ticket-hours-active{left:39%;right:4%}
+.ticket-hours-ends{position:relative;display:flex;justify-content:space-between;align-items:start;gap:.5rem;margin-top:1rem}
+.ticket-hours-time{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.15rem;line-height:1.3;min-width:0;color:#152838}
+.ticket-hours-time strong{font-size:clamp(.85rem,1.75vw,1.15rem);font-weight:900}
+.ticket-hours-time span{font-size:.82rem;font-weight:750}
+.ticket-hours-close{max-width:58%;text-align:center}
+@media(max-width:560px){
+.ticket-hours-chart{gap:.6rem;margin:.65rem 0 1.25rem}
+.ticket-hours-row{grid-template-columns:minmax(75px,23%) minmax(0,1fr);gap:.5rem;padding:.45rem 0 .75rem}
+.ticket-hours-type img{width:43px;height:46px}
+.ticket-hours-type strong{font-size:.72rem;white-space:normal}
+.ticket-hours-bar{height:30px}
+.ticket-hours-ends{margin-top:.9rem}
+.ticket-hours-time strong{font-size:clamp(.66rem,2.65vw,.88rem)}
+.ticket-hours-time span{font-size:.68rem}
+.ticket-hours-close{max-width:63%}
+}
 </style>
 </head>
 <body>
@@ -614,6 +644,35 @@ body{background:#fff}
   <div class="num">4</div>
   <div class="guide-body">
     <div class="title-row"><h2>当日券の買い方</h2></div>
+    <h3 class="ticket-hours-title">当日券売場の営業時間</h3>
+    <div class="ticket-hours-chart" role="group" aria-label="当日券窓口の営業時間。デーゲームは11時から試合終了30分後まで、ナイトゲームは15時から試合終了30分後まで。">
+      <div class="ticket-hours-row">
+        <div class="ticket-hours-type">
+          <img src="images/時間_昼.svg" alt="" aria-hidden="true" loading="lazy">
+          <strong>Day Game</strong>
+        </div>
+        <div class="ticket-hours-timeline">
+          <div class="ticket-hours-bar" aria-hidden="true"><div class="ticket-hours-active"></div></div>
+          <div class="ticket-hours-ends">
+            <div class="ticket-hours-time"><strong>11:00</strong><span>Open</span></div>
+            <div class="ticket-hours-time ticket-hours-close"><strong>After Game 30min</strong><span>Close</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ticket-hours-row">
+        <div class="ticket-hours-type">
+          <img src="images/時間_夜.svg" alt="" aria-hidden="true" loading="lazy">
+          <strong>Night Game</strong>
+        </div>
+        <div class="ticket-hours-timeline">
+          <div class="ticket-hours-bar ticket-hours-bar-night" aria-hidden="true"><div class="ticket-hours-active"></div></div>
+          <div class="ticket-hours-ends">
+            <div class="ticket-hours-time"><strong>15:00</strong><span>Open</span></div>
+            <div class="ticket-hours-time ticket-hours-close"><strong>After Game 30min</strong><span>Close</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <p>窓口で希望の席種・枚数・座席位置・支払い方法を日本語で伝えるための専用ページを用意しました。翻訳ページ内の座席図または価格表から席を選び、詳細画面の「この座席を選択」で確定してください。</p><p><a class="ticket-helper-intro-link" href="ticket-helper.html">チケット購入の翻訳ページを開く →</a></p><p class="section-draft-note">当日券は必ず販売されるわけではありません。販売の有無や購入条件は<a href="https://www.carp.co.jp/ticket/" target="_blank" rel="noopener noreferrer">カープ公式チケット案内</a>で確認してください。</p>
   </div>
 </section>
