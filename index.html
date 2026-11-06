@@ -634,6 +634,21 @@ body{background:#fff}
 .entrance-map-callout-front{left:68.49%;top:74.44%;width:23.20%;height:11.80%}
 .entrance-map-caption{font-size:.81rem;color:var(--muted);line-height:1.55;margin-top:.55rem}
 @media(max-width:560px){.entrance-map-layout{border-radius:8px}.entrance-map-callout{border-width:1px}.entrance-map-callout span{font-size:1.95cqw}.entrance-map-caption{font-size:.72rem}}
+
+/* Step 6: entrance procedure reconstructed with individual SVG assets */
+.entry-process-diagram{display:grid;grid-template-columns:minmax(0,1fr) minmax(42px,12%) minmax(0,1fr);align-items:center;gap:.8rem;width:100%;max-width:860px;margin:1.3rem auto 1.5rem}
+.entry-process-step{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:stretch;gap:.45rem}
+.entry-process-staff{font-weight:900;font-size:clamp(.85rem,2.15vw,1.2rem);color:#111;text-align:center;line-height:1.25;white-space:nowrap}
+.entry-process-booth{position:relative;width:min(82%,215px);height:clamp(125px,22vw,205px);border:6px solid #a5a5a5;border-top:0;margin-top:2rem;display:flex;align-items:flex-end;justify-content:center}
+.entry-process-booth:before,.entry-process-booth:after{content:"";position:absolute;top:0;width:72%;height:6px;background:#a5a5a5;transform-origin:center}
+.entry-process-booth:before{left:50%;transform:translateX(-100%) rotate(-38deg)}
+.entry-process-booth:after{right:50%;transform:translateX(100%) rotate(38deg)}
+.entry-process-person{display:block;max-width:68%;width:100%;height:78%;object-fit:contain;object-position:center bottom}
+.entry-process-item{position:absolute;right:-18%;bottom:4%;width:40%;height:40%;object-fit:contain}
+.entry-process-ticket{width:38%;height:32%;right:-18%;bottom:18%}
+.entry-process-action{display:flex;align-items:center;justify-content:center;min-height:3rem;padding:.6rem .35rem;width:100%;max-width:310px;background:#f00;color:#fff;border-radius:12px;font-weight:900;font-size:clamp(.74rem,2.05vw,1.04rem);text-align:center;line-height:1.15}
+.entry-process-arrow{position:relative;display:block;width:75%;height:23px;margin:2.5rem auto 0;background:#111;clip-path:polygon(0 22%,56% 22%,56% 0,100% 50%,56% 100%,56% 78%,0 78%)}
+@media(max-width:560px){.entry-process-diagram{grid-template-columns:minmax(0,1fr) minmax(22px,9%) minmax(0,1fr);gap:.22rem;margin:1rem auto 1.3rem}.entry-process-staff{font-size:clamp(.63rem,2.65vw,.82rem)}.entry-process-booth{width:83%;height:clamp(84px,24vw,130px);border-width:3px;margin-top:1.25rem}.entry-process-booth:before,.entry-process-booth:after{height:3px}.entry-process-item{right:-20%}.entry-process-action{min-height:2.25rem;border-radius:7px;padding:.35rem .15rem;font-size:clamp(.55rem,2.3vw,.72rem)}.entry-process-arrow{width:100%;height:17px;margin-top:1.2rem}}
 </style>
 </head>
 <body>
@@ -983,7 +998,27 @@ body{background:#fff}
     </div>
   </div>
   <figcaption class="entrance-map-caption">Main Gate：坂を上がった先 ／ Front Gate：チケット売場付近。実際の動線は現地の案内も確認してください。</figcaption>
-</figure><div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
+</figure>
+<div class="entry-process-diagram" role="group" aria-label="入場手順。最初にセキュリティスタッフによる手荷物検査を受け、次にチケットスタッフにチケットを提示します。">
+  <div class="entry-process-step">
+    <div class="entry-process-staff">Security Staff</div>
+    <div class="entry-process-booth">
+      <img class="entry-process-person" src="images/item/人物.svg" alt="" aria-hidden="true" loading="lazy">
+      <img class="entry-process-item entry-process-bag" src="images/item/カバン.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="entry-process-action">Baggage Inspection</div>
+  </div>
+  <span class="entry-process-arrow" aria-hidden="true"></span>
+  <div class="entry-process-step">
+    <div class="entry-process-staff">Ticket Staff</div>
+    <div class="entry-process-booth">
+      <img class="entry-process-person" src="images/item/人物.svg" alt="" aria-hidden="true" loading="lazy">
+      <img class="entry-process-item entry-process-ticket" src="images/item/チケット.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="entry-process-action">Check Ticket</div>
+  </div>
+</div>
+<div class="cols"><div class="fact"><div class="label">BASIC INFO</div><p>マツダ スタジアムには、正面ゲート、JR側ゲート、メインゲートの3つの入場ゲートがあります。席種に関わらず、どのゲートからでも入場できます。</p><p>入場時には、紙チケットまたはQRチケットが必要です。チケット提示の前に手荷物検査があるため、バッグの中を見せられるように準備しておきましょう。</p><p>一時退場する場合は、各出入口の再入場口で手続きが必要です。</p></div></div><aside class="tip"><h3><span class="tip-icon"><img src="images/icon_megaphone.svg" alt="" aria-hidden="true" width="22" height="22"></span>Editor's Tip</h3><p>初めて観戦する人は、試合開始1時間前には球場に到着するのがおすすめです。QRコードや紙チケットをすぐ出せるようにしておくと、スムーズに入場できます。</p></aside></div></section>
 <section class="guide" id="read-ticket">
   <div class="num">7</div>
   <div class="guide-body">
