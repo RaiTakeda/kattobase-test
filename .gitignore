@@ -1,0 +1,6 @@
+# Generated multilingual preview pages (not for production publication)
+_build/
+
+# Python cache
+__pycache__/
+*.pyc
