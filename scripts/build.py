@@ -73,6 +73,35 @@ def main() -> int:
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(page, encoding="utf-8")
         print(f"Built {destination.relative_to(ROOT) if destination.is_relative_to(ROOT) else destination}")
+    # This landing page is the entry point for returning visitors. Explicit
+    # language URLs remain authoritative and are never force-redirected.
+    entry = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KATTOBASE | Choose language</title>
+</head>
+<body>
+  <p>Opening your preferred language... <a href="en/">English</a></p>
+  <script>
+  (() => {
+    const valid = ['en', 'ja', 'zh-TW', 'ko'];
+    let preferred = 'en';
+    try {
+      const saved = localStorage.getItem('kattobase.preferredLanguage');
+      if (valid.includes(saved)) preferred = saved;
+    } catch (_) {}
+    // Preserve section anchors when entering through the locale chooser.
+    location.replace(preferred + '/' + location.hash);
+  })();
+  </script>
+</body>
+</html>
+"""
+    (output / "index.html").write_text(entry, encoding="utf-8")
+    print(f"Built {output / 'index.html'} (saved-language entry point)")
     print("Preview only: original index.html was not modified.")
     return 0
 
