@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>KATTOBASE | Choose language</title>
+</head>
+<body>
+  <p>Opening your preferred language... <a href="en/">English</a></p>
+  <script>
+  (() => {
+    const valid = ['en', 'ja', 'zh-TW', 'ko'];
+    let preferred = 'en';
+    try {
+      const saved = localStorage.getItem('kattobase.preferredLanguage');
+      if (valid.includes(saved)) preferred = saved;
+    } catch (_) {}
+    // Preserve section anchors when entering through the locale chooser.
+    location.replace(preferred + '/' + location.hash);
+  })();
+  </script>
+</body>
+</html>
