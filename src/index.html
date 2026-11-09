@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{locale}}">
+<html lang="{{locale}}" data-locale="{{locale}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -721,6 +721,12 @@ body{background:#fff}
 .site-drawer-steps a:hover,.site-drawer-home:hover{background:#fff0f2}
 .site-drawer-step-number{flex:none;display:grid;place-items:center;width:29px;height:29px;background:#f00;color:#fff;border-radius:7px;font-weight:900;font-size:.85rem}
 @media(max-width:560px){.site-header-nav{gap:.4rem;padding:.5rem .7rem}.site-header-nav .brand-logo{width:min(35vw,142px)}.site-header-actions{gap:.35rem}.site-lang summary{min-height:40px;padding:.25rem .45rem;font-size:.75rem}.site-menu-toggle{width:42px;height:40px}}
+
+/* Language switcher for locally built preview pages */
+.site-lang-options a{display:flex;align-items:center;justify-content:space-between;gap:.45rem;padding:.52rem .45rem;border-radius:7px;text-decoration:none;color:var(--navy);white-space:nowrap}
+.site-lang-options a:hover,.site-lang-options a:focus-visible{background:#f1f3f5}
+.site-lang-options a[aria-current="page"]{background:#edf3f8;font-weight:900}
+.site-lang-options a[aria-current="page"]::after{content:"✓";color:var(--red)}
 </style>
 </head>
 <body>
@@ -729,8 +735,13 @@ body{background:#fff}
 <header class="topbar"><nav class="nav site-header-nav" aria-label="サイトメニュー">
   <a class="brand" href="#top" aria-label="KATTOBASE トップへ"><img class="brand-logo" src="images/pagelogo/kattobase_logo.svg" alt="KATTOBASE"></a>
   <div class="site-header-actions">
-    <details class="site-lang" id="site-language"><summary aria-label="言語を選択"><span aria-hidden="true">🌐</span><span>日本語</span><span class="site-lang-chevron" aria-hidden="true">⌄</span></summary>
-      <div class="site-lang-options" aria-label="言語一覧"><span class="site-lang-current" aria-current="true">✓ 日本語</span><span class="site-lang-unavailable">English <small>準備中</small></span><span class="site-lang-unavailable">繁體中文 <small>準備中</small></span><span class="site-lang-unavailable">한국어 <small>準備中</small></span></div>
+    <details class="site-lang" id="site-language"><summary aria-label="Select language"><span aria-hidden="true">🌐</span><span class="site-lang-label">English</span><span class="site-lang-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="site-lang-options" aria-label="Language options">
+        <a data-site-lang="en" href="../en/">English</a>
+        <a data-site-lang="ja" href="../ja/">日本語</a>
+        <a data-site-lang="zh-TW" href="../zh-TW/">繁體中文</a>
+        <a data-site-lang="ko" href="../ko/">한국어</a>
+      </div>
     </details>
     <button class="site-menu-toggle" id="site-menu-toggle" type="button" aria-label="サイドメニューを開く" aria-haspopup="dialog" aria-controls="site-drawer"><span class="site-menu-lines" aria-hidden="true"><i></i><i></i><i></i></span></button>
   </div>
@@ -1302,6 +1313,41 @@ fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Er
   });
   document.addEventListener('click',event=>{if(language?.open&&!language.contains(event.target))language.removeAttribute('open')});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&language?.open)language.removeAttribute('open')});
+})();
+</script>
+
+<script>
+/* Preview-only language navigation. No other page content is translated by this script. */
+(()=>{
+  'use strict';
+  const current=document.documentElement.dataset.locale;
+  const names={'en':'English','ja':'日本語','zh-TW':'繁體中文','ko':'한국어'};
+  const storageKey='kattobase.preferredLanguage';
+  const picker=document.getElementById('site-language');
+  const label=picker?.querySelector('.site-lang-label');
+  if(label&&names[current])label.textContent=names[current];
+  for(const link of picker?.querySelectorAll('a[data-site-lang]')||[]){
+    const target=link.dataset.siteLang;
+    if(!Object.hasOwn(names,target))continue;
+    if(target===current)link.setAttribute('aria-current','page');
+    // Keep the section being read: #city, #schedule, #guide, etc.
+    // Do not convert an arbitrary fragment into an HTML selector.
+    if(location.hash)link.href+=location.hash;
+    link.addEventListener('click',event=>{
+      try{localStorage.setItem(storageKey,target)}catch(_){}
+      // Recompute at click time so hash changes during the session are preserved.
+      const url=new URL(link.getAttribute('href').split('#')[0],location.href);
+      url.hash=location.hash;
+      event.preventDefault();
+      location.assign(url.href);
+    });
+  }
+  // An explicitly opened language URL is authoritative; save its selection
+  // rather than redirecting to an older choice. _build/index.html is the
+  // saved-preference entry point for return visits.
+  if(names[current]){
+    try{localStorage.setItem(storageKey,current)}catch(_){}
+  }
 })();
 </script>
 </body></html>
