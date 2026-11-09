@@ -1,4 +1,4 @@
-# KATTOBASE 多言語化の基盤（試作）
+# KATTOBASE 多言語化の基盤（公開プレビュー）
 
 現在の公開サイトであるルートの `index.html` は**変更しません**。
 
@@ -10,6 +10,20 @@
 - `locales/zh-TW.json`: 台湾華語（繁体字）
 - `locales/ko.json`: 韓国語
 - `scripts/build.py`: Python標準ライブラリだけで各言語版HTMLを生成します。
+
+## GitHub Pages上のプレビュー
+
+GitHub Pages上に、検索登録を抑制したテスト用ページを配置しています。
+
+- 入口: https://raitakeda.github.io/kattobase-test/preview/
+- 英語: https://raitakeda.github.io/kattobase-test/preview/en/
+- 日本語: https://raitakeda.github.io/kattobase-test/preview/ja/
+- 台湾華語: https://raitakeda.github.io/kattobase-test/preview/zh-TW/
+- 韓国語: https://raitakeda.github.io/kattobase-test/preview/ko/
+
+`.github/workflows/build-preview.yml` によって `src/**`、`locales/**`、`scripts/build.py` またはワークフロー本体を更新すると、`python scripts/build.py --output preview` が実行され、生成物が `main` ブランチの `preview/` へ自動コミットされます。`workflow_dispatch` による手動実行も可能です。GitHub Pagesがブランチのルートから公開している構成を利用します。
+
+**プレビューURLは誰でも閲覧できます。** `noindex, nofollow` は検索登録の抑止であり、アクセス制限ではありません。公開用の `index.html` は変更されません。
 
 ## プレビューの生成
 
@@ -41,7 +55,7 @@ python -m http.server 8000
 ## 現段階の制限（重要）
 
 - **実際に翻訳済みなのはトップページの紹介文とHTMLのタイトル・説明のみです。** 観戦ガイドの本文、ヘッダー、サイドメニュー、JavaScript生成文言、図内の日本語は未翻訳です。
-- 生成物には `noindex, nofollow` を含めています。また、生成先 `_build/` は `.gitignore` でGitへの追加を抑制します。GitHub Pagesへの公開は行いません。**未翻訳ページをそのまま一般公開・検索登録しないでください。**
+- 生成物には `noindex, nofollow` を含めています。ローカル生成先 `_build/` は `.gitignore` でGitへの追加を抑制します。一方、GitHub Actionsが生成する `preview/` は一般閲覧可能なテストページとして公開します。**未翻訳ページをそのまま一般公開・検索登録しないでください。**
 - **ローカルプレビューの言語切り替えは実装済みです。** 各言語URLは `_build/<言語>/` で、切り替え時は `#city` などのページ内位置を保持し、選択言語を `localStorage` の `kattobase.preferredLanguage` に保存します。次回 `_build/` にアクセスすると、保存された言語に移動します。各言語URLを直接指定した場合は、その指定が優先されます。
 - 翻訳未完了のため、**現在公開中のルート `index.html` の言語ボタンは変更していません。**
 - ビルド時に日本語の既存HTMLとテンプレートが自動同期する仕組みは未実装です。今後は `src/index.html` を唯一の編集元にし、検証後に公開用各言語HTMLを生成する運用に移行します。
