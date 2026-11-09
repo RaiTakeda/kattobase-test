@@ -686,12 +686,77 @@ body{background:#fff}
 .guide-jump-label{display:grid;place-items:center;min-width:0;padding:.4rem .35rem;font-size:clamp(.74rem,1.05vw,.95rem);font-weight:750;line-height:1.35;text-align:center;overflow-wrap:anywhere}
 @media(max-width:760px){.guide-jump-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:.9rem 0 1.7rem}.guide-jump-card{grid-template-rows:22% minmax(0,1fr);aspect-ratio:1/1;min-height:0;border-width:1.5px;border-radius:14px}.guide-jump-number{font-size:clamp(1.2rem,5vw,2rem)}.guide-jump-label{font-size:clamp(.63rem,2.5vw,.95rem);padding:.28rem .3rem;line-height:1.3}}
 @media(max-width:440px){.guide-jump-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:.32rem}.guide-jump-card{border-width:1px;border-radius:11px;aspect-ratio:1/1.12}.guide-jump-number{font-size:clamp(1rem,5.4vw,1.5rem)}.guide-jump-label{font-size:clamp(.58rem,2.55vw,.72rem);padding:.18rem;line-height:1.3}}
+
+/* Shared header controls and accessible off-canvas menu */
+.site-header-nav{justify-content:space-between;min-height:62px}
+.site-header-actions{display:flex;align-items:center;gap:.55rem;margin-left:auto;flex:0 0 auto}
+.site-lang{position:relative;color:var(--navy);font-size:.83rem;font-weight:850}
+.site-lang summary{list-style:none;display:flex;align-items:center;justify-content:center;gap:.3rem;min-height:42px;border:1px solid #d7dfe6;border-radius:10px;background:#fff;padding:.3rem .7rem;cursor:pointer;white-space:nowrap}
+.site-lang summary::-webkit-details-marker{display:none}
+.site-lang-chevron{font-size:1.1rem;line-height:1}
+.site-lang-options{position:absolute;right:0;top:calc(100% + 7px);z-index:45;width:185px;border:1px solid #d7dfe6;border-radius:12px;background:#fff;box-shadow:0 12px 28px #102a432e;padding:.4rem;display:grid;gap:.2rem}
+.site-lang-options>span{display:flex;justify-content:space-between;align-items:center;gap:.25rem;padding:.52rem .45rem;white-space:nowrap}
+.site-lang-current{background:#edf3f8;border-radius:7px;color:var(--navy)}
+.site-lang-unavailable{color:#66727c}
+.site-lang-unavailable small{font-size:.65rem;color:#77838c}
+.site-menu-toggle{width:44px;height:42px;border:1px solid #d7dfe6;border-radius:10px;background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--navy)}
+.site-menu-lines{display:flex;flex-direction:column;justify-content:space-between;width:22px;height:17px}
+.site-menu-lines i{display:block;width:100%;height:2.5px;background:currentColor;border-radius:4px}
+.site-lang summary:focus-visible,.site-menu-toggle:focus-visible,.site-drawer a:focus-visible,.site-drawer-close:focus-visible{outline:3px solid #246cb2;outline-offset:3px}
+.site-drawer{position:fixed;left:auto;right:0;top:0;bottom:0;margin:0;width:min(400px,92vw);max-width:100%;height:100dvh;max-height:100dvh;border:0;padding:0;background:#fff;color:var(--ink);box-shadow:-10px 0 30px #0003;overflow-y:auto;overscroll-behavior:contain}
+.site-drawer::backdrop{background:rgba(16,32,48,.52)}
+.site-drawer-header{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.15rem;background:#fff;border-bottom:1px solid var(--line);font-size:1.1rem;color:var(--navy)}
+.site-drawer-close{border:0;background:#f1f3f5;border-radius:9px;width:38px;height:38px;font-size:1.6rem;line-height:1;cursor:pointer}
+.site-drawer-nav{display:block;padding:1rem 1.15rem 2rem}
+.site-drawer-nav a{color:inherit;text-decoration:none}
+.site-drawer-home{display:block;padding:.85rem .9rem;border:1px solid #e0e6ea;border-radius:10px;font-weight:850}
+.site-drawer-ticket{display:flex;align-items:center;gap:.6rem;margin:1rem 0 1.3rem;padding:1rem .75rem;border-radius:12px;background:var(--red);color:#fff!important;font-weight:950;line-height:1.4}
+.site-drawer-ticket-icon{font-size:1.3rem}
+.site-drawer-ticket span:nth-child(2){flex:1}
+.site-drawer-ticket small{display:block;font-size:.7rem;font-weight:600;opacity:.93;margin-top:.15rem}
+.site-drawer-ticket:hover{background:var(--red-dark)}
+.site-drawer-subhead{font-size:.98rem;font-weight:950;color:var(--navy);margin:0 0 .5rem;padding-bottom:.45rem;border-bottom:2px solid var(--red)}
+.site-drawer-steps{display:grid;gap:.1rem}
+.site-drawer-steps a{display:flex;align-items:center;gap:.7rem;padding:.63rem .35rem;border-bottom:1px solid #eef0f2;font-size:.88rem;font-weight:760}
+.site-drawer-steps a:hover,.site-drawer-home:hover{background:#fff0f2}
+.site-drawer-step-number{flex:none;display:grid;place-items:center;width:29px;height:29px;background:#f00;color:#fff;border-radius:7px;font-weight:900;font-size:.85rem}
+@media(max-width:560px){.site-header-nav{gap:.4rem;padding:.5rem .7rem}.site-header-nav .brand-logo{width:min(35vw,142px)}.site-header-actions{gap:.35rem}.site-lang summary{min-height:40px;padding:.25rem .45rem;font-size:.75rem}.site-menu-toggle{width:42px;height:40px}}
 </style>
 </head>
 <body>
 <a class="skip" href="#guide">ガイド本文へ移動</a>
 <div id="top"></div>
-<header class="topbar"><nav class="nav" aria-label="ページ内ナビゲーション"><a class="brand" href="#top" aria-label="KATTOBASE トップへ"><img class="brand-logo" src="images/pagelogo/kattobase_logo.svg" alt="KATTOBASE"></a><div class="navlinks"><a href="#city">広島へ</a><a href="#schedule">日程</a><a href="#tickets">チケット</a><a href="#access">アクセス</a><a href="#day-tickets">当日券</a><a href="#rules">ルール</a><a href="#gate">入場</a><a href="#read-ticket">チケットの見方</a><a href="#goods">グッズ</a><a href="#inside">球場内</a><a href="#event">イベント</a><a href="#return">帰り方</a></div></nav></header>
+<header class="topbar"><nav class="nav site-header-nav" aria-label="サイトメニュー">
+  <a class="brand" href="#top" aria-label="KATTOBASE トップへ"><img class="brand-logo" src="images/pagelogo/kattobase_logo.svg" alt="KATTOBASE"></a>
+  <div class="site-header-actions">
+    <details class="site-lang" id="site-language"><summary aria-label="言語を選択"><span aria-hidden="true">🌐</span><span>日本語</span><span class="site-lang-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="site-lang-options" aria-label="言語一覧"><span class="site-lang-current" aria-current="true">✓ 日本語</span><span class="site-lang-unavailable">English <small>準備中</small></span><span class="site-lang-unavailable">繁體中文 <small>準備中</small></span><span class="site-lang-unavailable">한국어 <small>準備中</small></span></div>
+    </details>
+    <button class="site-menu-toggle" id="site-menu-toggle" type="button" aria-label="サイドメニューを開く" aria-haspopup="dialog" aria-controls="site-drawer"><span class="site-menu-lines" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  </div>
+</nav></header>
+<dialog class="site-drawer" id="site-drawer" aria-labelledby="site-drawer-heading">
+  <div class="site-drawer-header"><strong id="site-drawer-heading">MENU</strong><button class="site-drawer-close" type="button" aria-label="メニューを閉じる">×</button></div>
+  <nav class="site-drawer-nav" aria-label="サイドメニュー内ナビゲーション">
+    <a class="site-drawer-home" href="#top">ページトップ</a>
+    <a class="site-drawer-ticket" href="ticket-helper.html"><span class="site-drawer-ticket-icon" aria-hidden="true">🎟</span><span>チケット購入の翻訳ページ<small>窓口での購入をサポート</small></span><span aria-hidden="true">›</span></a>
+    <h2 class="site-drawer-subhead">観戦ガイド</h2>
+    <div class="site-drawer-steps">
+      <a href="#city"><span class="site-drawer-step-number">0</span><span>広島市までのアクセス</span></a>
+      <a href="#schedule"><span class="site-drawer-step-number">1</span><span>試合日程を確認</span></a>
+      <a href="#tickets"><span class="site-drawer-step-number">2</span><span>チケットを購入</span></a>
+      <a href="#access"><span class="site-drawer-step-number">3</span><span>スタジアムへのアクセス</span></a>
+      <a href="#day-tickets"><span class="site-drawer-step-number">4</span><span>当日券の買い方</span></a>
+      <a href="#rules"><span class="site-drawer-step-number">5</span><span>スタジアムルール</span></a>
+      <a href="#gate"><span class="site-drawer-step-number">6</span><span>入場口</span></a>
+      <a href="#read-ticket"><span class="site-drawer-step-number">7</span><span>チケットの読みかた</span></a>
+      <a href="#goods"><span class="site-drawer-step-number">8</span><span>グッズ</span></a>
+      <a href="#inside"><span class="site-drawer-step-number">9</span><span>球場内のようす</span></a>
+      <a href="#event"><span class="site-drawer-step-number">10</span><span>試合中のイベント</span></a>
+      <a href="#return"><span class="site-drawer-step-number">11</span><span>帰り方</span></a>
+    </div>
+  </nav>
+</dialog>
 <section class="hero" aria-labelledby="hero-title"><div class="hero-visual"><img class="hero-stadium-photo" src="images/写真マツダスタジアム.jpg" alt="マツダスタジアムの写真" fetchpriority="high"></div><h1 id="hero-title" class="hero-visual-logo"><img class="hero-logo-wide" src="images/pagelogo/kattobase_logo_big.svg" alt="KATTOBASE HIROSHIMA BASEBALL WATCHING GUIDE"></h1><div class="hero-introduction">
   <h2 class="hero-intro-title">カープの街、広島へようこそ。</h2>
   <p>広島は、日本の西部に位置する都市です。世界遺産の厳島神社やお好み焼きで知られる一方、地元の野球チーム「広島東洋カープ」を熱狂的に応援する街でもあります。</p>
@@ -1218,4 +1283,25 @@ fetch('images/%E5%BA%A7%E5%B8%AD%E5%9B%B308_web.svg').then(r=>{if(!r.ok)throw Er
  if(selected)markSelection(selected);
 }).catch(e=>{map.textContent='座席図を読み込めませんでした。';console.error('Failed to load seat SVG',e)});
 })();
-</script></body></html>
+</script>
+<script>
+(()=>{'use strict';
+  const toggle=document.getElementById('site-menu-toggle');
+  const drawer=document.getElementById('site-drawer');
+  const close=drawer?.querySelector('.site-drawer-close');
+  const language=document.getElementById('site-language');
+  if(!toggle||!drawer||!close)return;
+  toggle.addEventListener('click',()=>{language?.removeAttribute('open');drawer.showModal();close.focus()});
+  close.addEventListener('click',()=>drawer.close());
+  drawer.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>drawer.close()));
+  drawer.addEventListener('close',()=>toggle.focus({preventScroll:true}));
+  drawer.addEventListener('click',event=>{
+    if(event.target!==drawer)return;
+    const rect=drawer.getBoundingClientRect();
+    if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)drawer.close();
+  });
+  document.addEventListener('click',event=>{if(language?.open&&!language.contains(event.target))language.removeAttribute('open')});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&language?.open)language.removeAttribute('open')});
+})();
+</script>
+</body></html>
