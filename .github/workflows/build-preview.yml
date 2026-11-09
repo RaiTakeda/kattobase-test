@@ -1,0 +1,48 @@
+name: Build multilingual preview
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "locales/**"
+      - "scripts/build.py"
+      - ".github/workflows/build-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: multilingual-preview
+  cancel-in-progress: false
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate preview pages
+        run: python scripts/build.py --output preview
+
+      - name: Publish generated pages to the existing main branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A preview/
+          if git diff --cached --quiet; then
+            echo "Preview is already up-to-date."
+          else
+            git commit -m "chore: rebuild multilingual GitHub Pages preview [skip ci]"
+            git push origin HEAD:main
+          fi
