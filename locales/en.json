@@ -1,8 +1,6 @@
 {
   "meta.title": "KATTOBASE | Hiroshima Baseball Watching Guide",
   "meta.description": "An unofficial guide for international travelers watching Hiroshima Toyo Carp baseball at Mazda Stadium for the first time.",
-  "hero.title": "Welcome to Hiroshima, the City of Carp!",
-  "hero.city": "Hiroshima is a city in western Japan. Known for the World Heritage Site Itsukushima Shrine and Hiroshima-style okonomiyaki, it is also a city that passionately supports its local baseball team, the Hiroshima Toyo Carp.",
   "hero.purpose": "This site provides essential information for travelers attending a baseball game in Hiroshima for the first time.",
   "hero.cta": "Go to the Baseball Guide",
   "hero.disclaimer": "This is an unofficial guide created by an individual. Ticket details, stadium opening times, events, and rules may change. Please always check official information on the day of your visit.",
@@ -22,5 +20,12 @@
   "steps.read-ticket": "Reading Your Ticket",
   "steps.goods": "Merchandise",
   "steps.inside": "Stadium Guide",
-  "steps.event": "In-Game Events"
+  "steps.event": "In-Game Events",
+  "hero.titleBefore": "Welcome to Hiroshima, the City of ",
+  "hero.titleCarp": "Carp",
+  "hero.titleAfter": "!",
+  "hero.cityBefore": "Hiroshima is a city in western Japan. Known for the World Heritage Site Itsukushima Shrine and Hiroshima-style okonomiyaki, it is also a city that passionately supports its local baseball team, the ",
+  "hero.cityCarp": "Hiroshima Toyo Carp",
+  "hero.cityAfter": ".",
+  "guide.heading": "Baseball Watching Guide (Steps 0–10)"
 }
