@@ -13,15 +13,14 @@
   "menu.ticketHelperDetail": "Help for buying tickets at the counter",
   "menu.guide": "Baseball Watching Guide",
   "steps.city": "Getting to Hiroshima",
-  "steps.schedule": "Check the Game Schedule",
-  "steps.tickets": "Buy Tickets",
+  "steps.schedule": "Game Schedule",
+  "steps.tickets": "Ticket Purchase",
   "steps.access": "Getting to the Stadium",
-  "steps.day-tickets": "Buying Tickets on Game Day",
-  "steps.rules": "Stadium Rules",
-  "steps.gate": "Entrance Gates",
-  "steps.read-ticket": "How to Read Your Ticket",
+  "steps.day-tickets": "Same-Day Tickets",
+  "steps.rules": "Spectator Rules",
+  "steps.gate": "Entering the Stadium",
+  "steps.read-ticket": "Reading Your Ticket",
   "steps.goods": "Merchandise",
-  "steps.inside": "Inside the Stadium",
-  "steps.event": "In-Game Events",
-  "steps.return": "Getting Back After the Game"
+  "steps.inside": "Stadium Guide",
+  "steps.event": "In-Game Events"
 }
